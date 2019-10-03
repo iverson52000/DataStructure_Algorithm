@@ -59,3 +59,4 @@ class Solution:
             if cur.next:
                 heapq.heappush(heap, (cur.next.val, idx, cur.next))
         return pre.next
+a
