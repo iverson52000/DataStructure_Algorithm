@@ -37,11 +37,11 @@ class Solution:
         s = []
         i = 0; res = 0; n = len(height)
         while i<n:
-            if not s or height[i]<=height[s[-1]]:
+            if not s or height[i] <= height[s[-1]]:
                 s.append(i)
-                i+=1
+                i += 1
             else:
                 i_pop = s.pop(-1)
                 if not s: continue	# i doesn’t change!!
-                res += (min(height[i], height[s[-1]]) - height[i_pop])*(i - s[-1] - 1)
+                res += (min(height[i], height[s[-1]])-height[i_pop])*(i-s[-1]-1)
         return res
