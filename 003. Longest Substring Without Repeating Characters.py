@@ -20,8 +20,7 @@ class Solution:
         n = len(s)
         m = {}       
         for i in range(n):
-            if s[i] in m and m[s[i]] > left:
-                left = m[s[i]]                
+            if s[i] in m and m[s[i]] > left: left = m[s[i]]                
             m[s[i]] = i
             res = max(res, i-left)
         return res 
