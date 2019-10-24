@@ -8,7 +8,8 @@ Created on Fri Oct  4 10:07:16 2019
 
 """
 $253. Meeting Rooms II
-Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms 
+Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] 
+(si < ei), find the minimum number of conference rooms 
 """
 
 #scanning line
@@ -33,7 +34,6 @@ from heapq import *
 def minMeetingRooms(self, intervals):
     intervals.sort(key = lambda x: x[0])
     heap = []
-    res = 0
     for interval in intervals:
         if heap and interval[0] >= heap[0]: heappop(heap)
         heappush(heap, interval[1])
