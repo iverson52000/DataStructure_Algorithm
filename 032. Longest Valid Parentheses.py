@@ -7,7 +7,8 @@ Created on Sun Oct  6 10:51:10 2019
 """
 
 """
-Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+Given a string containing just the characters '(' and ')', find the length of the longest valid 
+(well-formed) parentheses substring.
 """
 
 #stack

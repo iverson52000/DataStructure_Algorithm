@@ -7,8 +7,34 @@ Created on Wed Oct  2 10:35:20 2019
 """
 
 """
+23. Merge k Sorted Lists
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 """
+
+#Heap
+
+from heapq import *
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        pre = cur = ListNode(0)         
+        heap = []
+        for i in range(len(lists)):
+            if lists[i]: 
+                heapq.heappush(heap, (lists[i].val, i, lists[i]))             
+        while heap:
+            val, idx, node = heapq.heappop(heap)
+            cur.next = node
+            cur = cur.next       
+            if cur.next:
+                heapq.heappush(heap, (cur.next.val, idx, cur.next))
+        return pre.next
 
 #Merge Sort
 
@@ -36,27 +62,3 @@ class Solution:
         else:
             l2.next =self.mergeTwoLists(l1, l2.next)
             return l2
-
-#Heap
-
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        pre = cur = ListNode(0)         
-        heap = []
-        for i in range(len(lists)):
-            if lists[i]: 
-                heapq.heappush(heap, (lists[i].val, i, lists[i]))             
-        while heap:
-            val, idx, node = heapq.heappop(heap)
-            cur.next = node
-            cur = cur.next       
-            if cur.next:
-                heapq.heappush(heap, (cur.next.val, idx, cur.next))
-        return pre.next
-a
