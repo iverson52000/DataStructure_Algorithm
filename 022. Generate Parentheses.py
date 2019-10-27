@@ -7,7 +7,8 @@ Created on Sun Oct  6 11:07:38 2019
 """
 
 """
-Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+Given n pairs of parentheses, write a function to generate all combinations of 
+well-formed parentheses.
 """
 
 #dfs
