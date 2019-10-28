@@ -9,7 +9,8 @@ Created on Thu Oct 17 09:52:21 2019
 """
 *394. Decode String
 Given an encoded string, return it's decoded string.
-The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is 
+being repeated exactly k times. Note that k is guaranteed to be a positive integer.
 """
 
 #Stack
