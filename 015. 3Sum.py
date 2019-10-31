@@ -14,6 +14,8 @@ Note:
 The solution set must not contain duplicate triplets.
 """
 
+#Two pointer
+
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
