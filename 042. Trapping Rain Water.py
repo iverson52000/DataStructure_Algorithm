@@ -36,8 +36,9 @@ class Solution:
 class Solution:
     def trap(self, height: List[int]) -> int:
         s = []
-        i = 0; res = 0; n = len(height)
-        while i<n:
+        i = 0
+        res = 0
+        while i < len(height):
             if not s or height[i] <= height[s[-1]]:
                 s.append(i)
                 i += 1
