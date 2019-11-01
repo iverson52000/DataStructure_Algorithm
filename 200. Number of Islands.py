@@ -46,9 +46,9 @@ class Solution:
         grid[r][c] = '0'
         dirs = [(0,1), (0,-1), (-1,0), (1,0)]
         while q:
-            pop_r, pop_c = q.popleft()
+            r_pop, c_pop = q.popleft()
             for dirr in dirs:
-                r, c = pop_r + dirr[0], pop_c + dirr[1]
+                r, c = r_pop + dirr[0], c_pop + dirr[1]
                 if r < 0 or r >= len(grid) or c < 0 or c >= len(grid[0]) or grid[r][c] != '1': continue
                 q.append((r, c))
                 grid[r][c] = '0'
