@@ -20,8 +20,7 @@ Merge two sorted linked lists and return it as a new list. The new list should b
 
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        dummy = ListNode(0)
-        cur = dummy
+        pre = l3 = ListNode(0)
         while l1 and l2:
             if l1.val < l2.val:
                 cur.next = l1
@@ -31,7 +30,7 @@ class Solution:
                 l2 = l2.next
             cur = cur.next
         cur.next = l1 if l1 else l2
-        return dummy.next
+        return l3.next
 
 #Recursion
         

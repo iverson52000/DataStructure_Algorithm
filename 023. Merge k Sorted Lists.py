@@ -12,6 +12,7 @@ Merge k sorted linked lists and return it as one sorted list. Analyze and descri
 """
 
 #Heap
+#Time: O(nlog(k)) Space: O(k). n: number of total elements. k: len of lists
 
 from heapq import *
 
@@ -23,7 +24,7 @@ from heapq import *
 
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        pre = cur = ListNode(0)         
+        pre = cur = ListNode(-1)         
         heap = []
         for i in range(len(lists)):
             if lists[i]: 

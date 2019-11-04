@@ -16,8 +16,7 @@ Reverse a singly linked list.
 class Solution:
     def reverseList(self, head):
         if not head: return None
-        pre = None
-        cur = head
+        pre = None; cur = head
         while cur:
             nxt = cur.next
             cur.next = pre
