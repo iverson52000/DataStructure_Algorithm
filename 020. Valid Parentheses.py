@@ -8,7 +8,8 @@ Created on Sun Oct  6 10:35:13 2019
 
 """
 20. Valid Parentheses
-Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if 
+the input string is valid.
 """
 
 #stack
@@ -20,9 +21,8 @@ class Solution:
         for char in s:
             if char in ('(', '[', '{'): stack.append(char)
             else:
-                if stack: cur = stack.pop()
-                else: return False
-                if char == ')' and cur != '(': return False
-                if char == ']' and cur != '[': return False
-                if char == '}' and cur != '{': return False
+                if not stack: return False
+                elif char == ')' and stack.pop() != '(': return False
+                elif char == ']' and stack.pop() != '[': return False
+                elif char == '}' and stack.pop() != '{': return False
         return len(stack) == 0 
