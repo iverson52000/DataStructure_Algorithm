@@ -15,7 +15,7 @@ class Solution:
         for i in range(n):
             if A[i] == A[0] or B[i] == A[0]:
                 if A[i] != A[0]: A_swap += 1
-                if B[i] != A[0]: B_swap += 1
+                elif B[i] != A[0]: B_swap += 1
             else: break
         if i == n-1: return min(A_swap, B_swap)
         
@@ -23,7 +23,7 @@ class Solution:
         for i in range(n):
             if A[i] == B[0] or B[i] == B[0]:
                 if A[i] != B[0]: A_swap += 1
-                if B[i] != B[0]: B_swap += 1
+                elif B[i] != B[0]: B_swap += 1
             else: break
         if i == n-1: return min(A_swap, B_swap)
         return -1
