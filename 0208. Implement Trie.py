@@ -1,15 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  1 15:59:05 2019
-
-@author: alberthsu
-"""
-
 """
 208. Implement Trie (Prefix Tree)
 Implement a trie with insert, search, and startsWith methods.
 """
+
+#Trie
 
 import collections
 
