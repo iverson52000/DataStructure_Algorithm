@@ -10,14 +10,13 @@ You may assume all four edges of the grid are all surrounded by water.
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         if not grid or not grid[0]: return 0
-        n_r = len(grid); n_c = len(grid[0])
-        cnt = 0
-        for r in range(n_r):
-            for c in range(n_c):
+        res = 0
+        for r in range(len(grid):
+            for c in range(grid[0]):
                 if grid[r][c] == '1':
                     self.dfs(grid, r, c)
-                    cnt += 1
-        return cnt
+                    res += 1
+        return res
     
     def dfs(self, grid, r, c):
         if r < 0 or r >= len(grid) or c < 0 or c >= len(grid[0]) or grid[r][c] != '1': return
@@ -26,6 +25,8 @@ class Solution:
         self.dfs(grid, r-1, c)
         self.dfs(grid, r, c+1)
         self.dfs(grid, r, c-1)
+
+
 
 #bfs
 
@@ -43,7 +44,6 @@ class Solution:
     def bfs(self, grid, r, c):
         q = collections.deque()
         q.append((r, c))
-        grid[r][c] = '0'
         dirs = [(0,1), (0,-1), (-1,0), (1,0)]
         while q:
             r_pop, c_pop = q.popleft()
