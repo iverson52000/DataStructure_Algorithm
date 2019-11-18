@@ -19,12 +19,12 @@ You are the second player.  If it is possible to choose such a y to ensure you w
 class Solution:
     def btreeGameWinningMove(self, root: TreeNode, n: int, x: int) -> bool:
         l_r = [0, 0]
-        def dfs(node):
+        def dfs(node) -> int:
             if not node: return 0
-            l, r = dfs(node.left), dfs(node.right)
-            if node.val == x:
-                l_r[0], l_r[1] = l, r
-            return l+r+1
+            n_left, n_right = dfs(node.left), dfs(node.right)
+            if node.val == x: l_r[0], l_r[1] = n_left, n_right
+            return n_left+n_right+1
         dfs(root)
         p = n-sum(l_r)-1
-        return dfs(root)/2 < max(max(l_r), p)
+        return max(max(l_r), p) > n/2        
+
