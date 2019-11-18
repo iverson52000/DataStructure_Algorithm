@@ -32,4 +32,10 @@ class Solution:
         if op == '+': return left+right
         if op == '-': return left-right
         if op == '*': return left*right
-            
+
+res = []
+memo = {}
+if input in memo: return memo[input]
+…   
+memo[input] = res
+return res
