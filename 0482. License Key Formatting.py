@@ -9,7 +9,7 @@ letters should be converted to uppercase.
 Given a non-empty string S and a number K, format the string according to the rules described above.
 """
 
-#string
+#string manipulation
 
 class Solution:
     def licenseKeyFormatting(self, S: str, K: int) -> str:
