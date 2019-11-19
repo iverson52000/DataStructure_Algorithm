@@ -1,6 +1,8 @@
 """
 !354. Russian Doll Envelopes
-You have a number of envelopes with widths and heights given as a pair of integers (w, h). One envelope can fit into another if and only if both the width and height of one envelope is greater than the width and height of the other envelope.
+You have a number of envelopes with widths and heights given as a pair of integers (w, h). One 
+envelope can fit into another if and only if both the width and height of one envelope is greater 
+than the width and height of the other envelope.
 What is the maximum number of envelopes can you Russian doll? (put one inside other)
 """
 
@@ -10,7 +12,7 @@ class Solution:
     def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
         if not envelopes: return 0
         tmp = []
-        envelopes.sort(key=lambda k: (k[0], -k[1]))        
+        envelopes.sort(key=lambda x: (x[0], -x[1]))        
         for i in range(len(envelopes)):
             left = 0; right = len(tmp)-1; height = envelopes[i][1]
             while left <= right:
