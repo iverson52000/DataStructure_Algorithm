@@ -10,6 +10,7 @@ It is possible that several messages arrive roughly at the same time.
 #hashmap
 
 m = {}
+
 if message not in m:
     m[message] = timestamp
     return True
