@@ -15,8 +15,8 @@ class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         if not board: return False
         flag = set()
-        for r in range(9):
-            for c in range(9):
+        for r in range(board):
+            for c in range(board[0]):
                 if board[r][c] != '.':
                     num = board[r][c]
                     if (r, num) in flag or (num, c) in flag or (r//3, c//3, num) in flag: return False

@@ -42,9 +42,10 @@ class Solution:
         return cnt
     
     def bfs(self, grid, r, c):
+        dirs = [(0,1), (0,-1), (-1,0), (1,0)]
         q = collections.deque()
         q.append((r, c))
-        dirs = [(0,1), (0,-1), (-1,0), (1,0)]
+        grid[r][c] = '0'
         while q:
             r_pop, c_pop = q.popleft()
             for dirr in dirs:
