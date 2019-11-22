@@ -11,18 +11,17 @@ cannot get "helloo" since the group "oo" has size less than 3.  Also, we could d
 Given a list of query words, return the number of words that are stretchy.
 """
 
-#Traverse
+#Two pointer+Traverse
 
 class Solution:
     def expressiveWords(self, S: str, words: List[str]) -> int:
         res = 0
-        n_S, n_words = len(S), len(words)
         for word in words:
-            i_S, i_word = 0, 0
+            i_word = 0
             valid = True
-            for i_S in range(n_S):
+            for i_S in range(len(S)):
                 if i_word < len(word) and S[i_S] == word[i_word]: i_word += 1
-                elif S[i_S-1:i_S+2] != S[i_S]*3 != S[i_S - 2:i_S+1]: 
+                elif S[i_S-1:i_S+2] != S[i_S]*3 != S[i_S-2:i_S+1]:
                     valid = False
                     break
             if valid and i_word == len(word): res += 1
