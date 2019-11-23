@@ -2,7 +2,9 @@
 !1032. Stream of Characters
 Implement the StreamChecker class as follows:
 •	StreamChecker(words): Constructor, init the data structure with the given words.
-•	query(letter): returns true if and only if for some k >= 1, the last k characters queried (in order from oldest to newest, including this letter just queried) spell one of the words in the given list.
+•	query(letter): returns true if and only if for some k >= 1, the last k characters queried 
+(in order from oldest to newest, including this letter just queried) spell one of the words in the 
+given list.
 """
 
 #Trie
@@ -18,8 +20,7 @@ class Trie:
     
     def insert(self, word):
         node = self.root
-        for w in word:
-            node = node.children[w]
+        for w in word: node = node.children[w]
         node.isWord = True
 
 class StreamChecker:
@@ -27,8 +28,7 @@ class StreamChecker:
     def __init__(self, words: List[str]):
         self.trie = Trie()
         self.letters = []
-        for word in words:
-            self.trie.insert(word[::-1])
+        for word in words: self.trie.insert(word[::-1])
 
 
     def query(self, letter: str) -> bool:
