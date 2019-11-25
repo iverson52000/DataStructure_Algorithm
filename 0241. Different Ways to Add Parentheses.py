@@ -1,16 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Mon Oct  7 09:50:17 2019
-
-@author: alberthsu
+Given a string of numbers and operators, return all possible results from computing all the different 
+possible ways to group numbers and operators. The valid operators are +, - and *.
 """
 
-"""
-Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.
-"""
-
-#dfs
+#dfs. divide and conquer
 
 class Solution:
     def diffWaysToCompute(self, input: str) -> List[int]:
@@ -33,9 +26,4 @@ class Solution:
         if op == '-': return left-right
         if op == '*': return left*right
 
-res = []
-memo = {}
-if input in memo: return memo[input]
-…   
-memo[input] = res
-return res
+

@@ -1,14 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  1 15:45:42 2019
-
-@author: alberthsu
-"""
-
 """
 95. Unique Binary Search Trees II
-Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
+Given an integer n, generate all structurally unique BST's (binary search trees) that store values 
+1, 2 ... n.
 """
 
 #dfs+memo
