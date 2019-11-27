@@ -1,11 +1,12 @@
 """
 846. Hand of Straights
 Alice has a hand of cards, given as an array of integers.
-Now she wants to rearrange the cards into groups so that each group is size W, and consists of W consecutive cards.
+Now she wants to rearrange the cards into groups so that each group is size W, and consists of W 
+consecutive cards.
 Return true if and only if she can.
 """
 
-#hashmap
+#hashmap+traverse
 
 class Solution:
     def isNStraightHand(self, hand: List[int], W: int) -> bool:
