@@ -1,12 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sun Oct  6 11:07:38 2019
-
-@author: alberthsu
-"""
-
-"""
+22. Generate Parentheses
 Given n pairs of parentheses, write a function to generate all combinations of 
 well-formed parentheses.
 """
