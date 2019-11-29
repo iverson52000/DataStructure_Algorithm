@@ -5,7 +5,7 @@ If there is no such window in S that covers all characters in T, return the empt
 If there are multiple such minimum-length windows, return the one with the left-most starting index.
 """
 
-#Two pointer
+#Two pointers
 
 S = "abcdebdde"; T = "bde"
 #Output: "bcde"
@@ -25,6 +25,9 @@ for i_S in range(len(S)):
 			if end-i_S < minn:
 				minn = end-i_S
 				res = S[i_S:i_S+end-1]
+
+
+
 
 
 
