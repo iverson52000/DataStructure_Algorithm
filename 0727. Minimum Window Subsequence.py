@@ -27,7 +27,18 @@ for i_S in range(len(S)):
 				res = S[i_S:i_S+end-1]
 
 
-
+for i_S in range(len(S)):
+	if S[i_S] == T[i_T]: i_T += 1
+	if i_T >= len(T):
+		end = i_S+1
+		i_T -= 1
+		while i_T >= 0:
+			if T[i_T] == S[i_S]: i_T -= 1
+			i_S -= 1
+		i_S += 1; i_T += 1
+		if end-i_S < min_len:
+			min_len = end-i_S
+			res = S[i_S:i_S]
 
 
 
