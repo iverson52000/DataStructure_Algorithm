@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 16 13:38:20 2019
-
-@author: alberthsu
-"""
-
 """
 155. Min Stack
 Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
