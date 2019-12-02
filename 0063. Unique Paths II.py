@@ -14,15 +14,16 @@ class Solution:
         :rtype: int
         """
         if not obstacleGrid or not obstacleGrid[0] or obstacleGrid[0][0] == 1: return 0
-        
-        rlen = len(obstacleGrid); clen = len(obstacleGrid[0])
-        dp = [[0 for i in range(clen+1)] for j in range(rlen+1)]
+        n_r = len(obstacleGrid); n_c = len(obstacleGrid[0]) 
+        dp = [[0]*(n_c+1) for i in range(n_r+1)]
         dp[0][1] = 1
-        for r in range(1, rlen+1):
-            for c in range(1, clen+1):
-                if obstacleGrid[r-1][c-1] == 1: continue
-                dp[r][c] = dp[r-1][c]+dp[r][c-1]
-        return dp[rlen][clen]
+        for r in range(1, n_r+1):
+            for c in range(1, n_c+1):
+                if obstacleGrid[r-1][c-1] != 1:
+                    dp[r][c] = dp[r][c-1]+dp[r-1][c]
+                else:
+                    dp[r][c] = 0
+        return dp[-1][-1]
 
 #1d dp
 
