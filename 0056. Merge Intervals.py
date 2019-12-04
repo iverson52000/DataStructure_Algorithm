@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  4 09:42:15 2019
-
-@author: alberthsu
-"""
-
 """
 56. Merge Intervals
 Given a collection of intervals, merge all overlapping intervals.
