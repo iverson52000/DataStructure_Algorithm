@@ -13,3 +13,4 @@ class Solution:
                 res[-1][1] = max(res[-1][1], interval[1])
             else: res.append(interval)
         return res 
+
