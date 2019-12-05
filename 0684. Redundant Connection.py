@@ -17,6 +17,8 @@ class Solution:
             roots[node1] = node2
         return []
     
-    def findRoot(self, roots, idx):
-        if roots[idx] == -1: return idx
-        else: return self.findRoot(roots, roots[idx])
+    def findRoot(self, roots, v):
+        if roots[v] == -1: return v
+        else:
+            roots[v] = self.findRoot(roots, roots[v]) 
+            return roots[v]
