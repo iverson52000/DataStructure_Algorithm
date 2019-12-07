@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Oct 17 09:52:21 2019
-
-@author: alberthsu
-"""
-
 """
 *394. Decode String
 Given an encoded string, return it's decoded string.

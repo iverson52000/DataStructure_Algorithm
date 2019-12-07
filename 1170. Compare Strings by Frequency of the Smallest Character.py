@@ -12,11 +12,11 @@ is the number of words such that f(queries[i]) < f(W), where W is a word in word
 
 class Solution:
     def numSmallerByFrequency(self, queries: List[str], words: List[str]) -> List[int]:
-        words_cnt = sorted([w.count(min(w)) for w in words])
+        words_cnts = sorted([w.count(min(w)) for w in words])
         res = []
         for query in queries:
             cnt = query.count(min(query))
-            idx = bisect.bisect(words_cnt, cnt)
+            idx = bisect.bisect(words_cnts, cnt)
             res.append(len(words)-idx)
         return res
 

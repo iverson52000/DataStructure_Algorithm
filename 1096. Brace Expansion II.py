@@ -23,19 +23,20 @@ Given an expression representing a set of words under the given grammar, return 
 
 class Solution:
     def braceExpansionII(self, expression: str) -> List[str]:
-        stack, res, cur = [], [], []
-        for i in range(len(expression)):
-            char = expression[i]
-            if char.isalpha():
-                cur = [c+char for c in cur or ['']]
-            elif char == '{':
-                stack.append((res, cur))
-                res, cur = [], []
-            elif char == '}':
-                pre_res, pre = stack.pop()
-                cur = [p+c for c in res+cur for p in pre or ['']]
-                res = pre_res
+        stack = []
+        pre = []
+        cur = []
+        for char in expression:
+            if char.isalpha(): cur = [c+char for c in cur or ['']]
             elif char == ',':
-                res += cur
+                pre += cur
                 cur = []
-        return sorted(set(res+cur))
+            elif char == '{':
+                stack.append((pre, cur))
+                pre = []; cur = []
+            elif char == '}':
+                pre_pop, cur_pop = stack.pop()
+                cur = [c2+c1 for c1 in pre+cur for c2 in cur_pop or ['']]
+                pre = pre_pop
+        return sorted(set(pre+cur))
+                
