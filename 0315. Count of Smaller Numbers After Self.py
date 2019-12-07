@@ -1,15 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  8 10:25:44 2019
-
-@author: alberthsu
-"""
-
 """
 315. Count of Smaller Numbers After Self
 You are given an integer array nums and you have to return a new counts array. 
-The counts array has the property where counts[i] is the number of smaller elements to the right of nums[i].
+The counts array has the property where counts[i] is the number of smaller elements to the 
+right of nums[i].
 """
 
 #binary search

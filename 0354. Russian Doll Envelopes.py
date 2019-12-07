@@ -14,7 +14,8 @@ class Solution:
         tmp = []
         envelopes.sort(key=lambda x: (x[0], -x[1]))        
         for i in range(len(envelopes)):
-            left = 0; right = len(tmp)-1; height = envelopes[i][1]
+            left = 0; right = len(tmp)-1
+            height = envelopes[i][1]
             while left <= right:
                 mid = (left+right)//2
                 if height > tmp[mid]: left = mid+1
