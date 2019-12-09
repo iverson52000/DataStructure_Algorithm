@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 19 10:28:38 2019
-
-@author: alberthsu
-"""
-
 """
 380. Insert Delete GetRandom O(1)
 Design a data structure that supports all following operations in average O(1) time.
