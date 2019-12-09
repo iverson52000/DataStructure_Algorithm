@@ -15,7 +15,7 @@ class LRUCache:
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.m = {}
-        self.q = collections.deque([])
+        self.q = collections.deque()
 
     def get(self, key: int) -> int:
         if key not in self.m: return -1
@@ -24,20 +24,20 @@ class LRUCache:
         return self.m[key]
 
     def put(self, key: int, value: int) -> None:
-        if key in self.m: self.q.remove(key)	#O(n). Shift
+        if key in self.m: self.q.remove(key)	#O(n) Shift
         self.m[key] = value
         self.q.append(key)	#O(1)
         if len(self.m) > self.capacity:
-            pop_key = self.q.popleft()
-            self.m.pop(pop_key)
+            key_pop = self.q.popleft()
+            self.m.pop(key_pop)
 
 #DLinkedList + Hashmap O(1)
             
 class Node:
     
-    def __init__(self, key, val):
+    def __init__(self, key, value):
         self.key = key
-        self.val = val
+        self.val = value
         self.next = None
         self.prev = None
 
@@ -77,9 +77,7 @@ class LRUCache:
         return node.val
 
     def put(self, key: int, value: int) -> None:
-        if key in self.m: 
-            node = self.m[key]
-            self.q.remove(node)
+        if key in self.m: self.q.remove(self.m[key])
         node = Node(key, value)
         self.q.append(node)
         self.m[key] = node
