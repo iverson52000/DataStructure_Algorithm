@@ -17,11 +17,11 @@ class Solution:
                 right_input = self.diffWaysToCompute(input[i+1:])
                 for left in left_input:
                     for right in right_input:
-                        res.append(self.ops(left, right, input[i]))
+                        res.append(self.calc(left, right, input[i]))
         memo[input] = res
         return res
     
-    def ops(self, left, right, op) -> int:
+    def calc(self, left, right, op) -> int:
         if op == '+': return left+right
         if op == '-': return left-right
         if op == '*': return left*right
