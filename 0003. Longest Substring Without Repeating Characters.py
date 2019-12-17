@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct  5 10:45:36 2019
-
-@author: alberthsu
-"""
-
 """
 *3. Longest Substring Without Repeating Characters
 Given a string, find the length of the longest substring without repeating characters.
