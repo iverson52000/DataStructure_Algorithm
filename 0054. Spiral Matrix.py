@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 15 10:14:54 2019
-
-@author: alberthsu
-"""
-
 """
 54. Spiral Matrix
 Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix 
