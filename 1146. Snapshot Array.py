@@ -14,7 +14,6 @@ class SnapshotArray:
     def __init__(self, length: int):
         self.A = [[[-1, 0]] for i in range(length)]
         self.snap_id = 0
-        self.n = length
 
     def set(self, index, val):
         self.A[index].append([self.snap_id, val])
@@ -40,7 +39,7 @@ class SnapshotArray(object):
 
     def snap(self):
         self.snaps.append(self.nums.copy())
-        return len(self.snaps) - 1
+        return len(self.snaps)-1
 
     def get(self, index, snap_id):
         if index in self.snaps[snap_id]:
