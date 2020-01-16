@@ -20,7 +20,7 @@ class Solution(object):
         """
         if not root: return []
         res = []
-        stack = [root]
+        s = [root]
         while s:
             node = s.pop()
             res.append(node.val)
