@@ -28,3 +28,18 @@ class Solution:
             return
         self.dfs(root.left, path+'->', res)
         self.dfs(root.right, path+'->', res)
+
+#Iteration
+
+def binaryTreePaths1(self, root):
+    if not root: return []
+    res, stack = [], [(root, "")]
+    while stack:
+        node, path = stack.pop()
+        if not node.left and not node.right:
+            res.append(path +str(node.val))
+        if node.right:
+            stack.append((node.right, path +str(node.val)+"->"))
+        if node.left:
+            stack.append((node.left, path +str(node.val)+"->"))
+    return res
