@@ -7,6 +7,7 @@ Assume a BST is defined as follows:
 •	Both the left and right subtrees must also be binary search trees.
 """
 
+#1/20
 #dfs
 
 # Definition for a binary tree node.
