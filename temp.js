@@ -5,4 +5,4 @@ function logThis(){
   console.log(this);
 }
 
-new logThis();f
+new logThis();a
