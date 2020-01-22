@@ -7,7 +7,7 @@ be a descendant of itself).”
 Given the following binary tree:  root = [3,5,1,6,2,0,8,null,null,7,4]
 """
 
-#recursion
+#dfs
 
 # Definition for a binary tree node.
 # class TreeNode:
