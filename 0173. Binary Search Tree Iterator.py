@@ -1,6 +1,7 @@
 """
 173. Binary Search Tree Iterator
-Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root 
+node of a BST.
 Calling next() will return the next smallest number in the BST.
 """
 
@@ -26,17 +27,17 @@ class BSTIterator:
         @return the next smallest number
         """
         node = self.stack.pop()
-        x = node.right
-        while x:
-            self.stack.append(x)
-            x = x.left
+        root = node.right
+        while root:
+            self.stack.append(root)
+            root = root.left
         return node.val
 
     def hasNext(self) -> bool:
         """
         @return whether we have a next smallest number
         """
-        return len(self.stack)>0
+        return len(self.stack) > 0
 
 
 # Your BSTIterator object will be instantiated and called as such:
