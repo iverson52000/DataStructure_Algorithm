@@ -4,6 +4,8 @@ Given an integer n, generate all structurally unique BST's (binary search trees)
 1, 2 ... n.
 """
 
+#1/26/20
+
 #dfs+memo
 
 # Definition for a binary tree node.
