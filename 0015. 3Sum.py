@@ -6,7 +6,7 @@ Note:
 The solution set must not contain duplicate triplets.
 """
 
-#Two pointer
+#Two pointers
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
