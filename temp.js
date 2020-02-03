@@ -1,8 +1,18 @@
-"use strict";
+const promise = New Promise((resolve, reject) => {
+  if (true){
+    resolve('worked');
+  }
+  else{
+    reject('error');
+  }
+})
 
-function logThis(){
-  this.desc = 'logger';
-  console.log(this);
+promise.then(res => console.log(res))
+
+async function fetchUsers(){
+  const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await resp.json();
+  return data;
 }
 
-new logThis();a
+fetchUsers()

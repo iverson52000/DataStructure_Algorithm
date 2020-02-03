@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Oct  3 10:24:13 2019
-
-@author: alberthsu
-"""
-
 """
 42. Trapping Rain Water
 Given n non-negative integers representing an elevation map where the width of each bar is 1, 

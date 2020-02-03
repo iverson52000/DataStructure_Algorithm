@@ -6,13 +6,13 @@ Given n non-negative integers representing the histogram's bar height where the 
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
         heights.append(0)
-        stack = [-1]
+        s = [-1]
         res = 0
         for i in range(len(heights)):
-            while heights[i] < heights[stack[-1]]:
-                h = heights[stack.pop()]
-                w = i-stack[-1]-1
+            while heights[i] < heights[s[-1]]:
+                h = heights[s.pop()]
+                w = i-s[-1]-1
                 res = max(res, h*w)
-            stack.append(i)
+            s.append(i)
         #heights.pop()
         return res 
