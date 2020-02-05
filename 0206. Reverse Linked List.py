@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct  2 10:00:50 2019
-
-@author: alberthsu
-"""
-
 """
 206. Reverse Linked List
 Reverse a singly linked list.
