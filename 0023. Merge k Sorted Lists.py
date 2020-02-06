@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct  2 10:35:20 2019
-
-@author: alberthsu
-"""
 
 """
 23. Merge k Sorted Lists
@@ -50,16 +43,16 @@ class Solution:
         if not lists: return 
         if len(lists) == 1: return lists[0]
         mid = len(lists)//2
-        l_list = self.mergeKLists(lists[:mid])
-        r_list = self.mergeKLists(lists[mid:])
-        return self.mergeTwoLists(l_list, r_list)
+        left_list = self.mergeKLists(lists[:mid])
+        right_list = self.mergeKLists(lists[mid:])
+        return self.mergeTwoLists(left_list, right_list)
     
     def mergeTwoLists(self, l1, l2):
         if not l1: return l2
         if not l2: return l1      
-        if l1.val<l2.val:
-            l1.next =self.mergeTwoLists(l1.next, l2)
+        if l1.val < l2.val:
+            l1.next = self.mergeTwoLists(l1.next, l2)
             return l1
         else:
-            l2.next =self.mergeTwoLists(l1, l2.next)
+            l2.next = self.mergeTwoLists(l1, l2.next)
             return l2
