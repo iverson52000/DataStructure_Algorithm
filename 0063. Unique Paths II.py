@@ -5,6 +5,8 @@ The robot can only move either down or right at any point in time. The robot is 
 Now consider if some obstacles are added to the grids. How many unique paths would there be?
 """
 
+#2/12
+
 #dp
 
 class Solution:
@@ -41,7 +43,7 @@ class Solution:
         for r in range(1, n_r+1):
             for c in range(1, n_c+1):
                 if obstacleGrid[r-1][c-1] == 1: 
-                    dp[c] = 0
+                    dp[c] = 0   #needed for 1D dp!
                     continue
                 dp[c] += dp[c-1]
         return dp[n_c]
