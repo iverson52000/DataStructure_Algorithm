@@ -1,10 +1,10 @@
 """
  *139. Word Break
-Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine 
+if s can be segmented into a space-separated sequence of one or more dictionary words.
 """
 
 #dfs
-
 class Solution(object):
     def wordBreak(self, s, wordDict):
         memo = {}
@@ -24,7 +24,6 @@ class Solution(object):
         return False
 
 #bfs
-
 class Solution(object):
     def wordBreak(self, s, wordDict):
         visited = {}
@@ -43,7 +42,6 @@ class Solution(object):
         return False
 
 #dp
-
 class Solution:
     def wordBreak(self, s, wordDict):
         n = len(s)
