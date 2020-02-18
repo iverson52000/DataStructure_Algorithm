@@ -15,4 +15,3 @@ async function fetchUsers(){
   return data;
 }
 
-data = fetchUsers() dffhh
