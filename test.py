@@ -1,3 +1,5 @@
+
+
 m = collections.defaultdict(int)
 for transaction in transactions:
     m[transaction[0]] += transaction[2]
@@ -19,3 +21,6 @@ def dfs(level, balances) -> int:
         if cur*nxt < 0:
             balances[i] = cur+nxt
             minn = min(minn, 1+dfs(i))
+
+
+#test test
