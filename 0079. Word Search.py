@@ -27,9 +27,9 @@ class Solution:
             return False
         tmp = board[r][c]
         board[r][c] = '#'
-        res = self.dfs(board, word[1:], r+1, c) or\
-        self.dfs(board, word[1:], r-1, c) or\
-        self.dfs(board, word[1:], r, c+1) or\
+        res = self.dfs(board, word[1:], r+1, c) or \
+        self.dfs(board, word[1:], r-1, c) or \
+        self.dfs(board, word[1:], r, c+1) or \
         self.dfs(board, word[1:], r, c-1)
         board[r][c] = tmp
         return res
