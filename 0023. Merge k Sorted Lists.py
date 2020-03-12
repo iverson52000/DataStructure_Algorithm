@@ -26,8 +26,8 @@ class Solution:
             val, idx, node = heapq.heappop(heap)
             cur.next = node
             cur = cur.next       
-            if cur.next:
-                heapq.heappush(heap, (cur.next.val, idx, cur.next))
+            if node.next:
+                heapq.heappush(heap, (node.next.val, idx, node.next))
         return pre.next
 
 #Merge Sort

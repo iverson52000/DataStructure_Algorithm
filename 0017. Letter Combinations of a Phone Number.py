@@ -4,26 +4,26 @@ Given a string containing digits from 2-9 inclusive, return all possible letter
 combinations that the number could represent.
 """
 
-#dfs
+# dfs
+
 
 class Solution:
-    def letterCombinations(self, digits):
-        """
-        :type digits: str
-        :rtype: List[str]
-        """
-        if not digits: return ''
+
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
         res = []
-        letters = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
-        path = ''
+        self.letters = ["", "", "abc", "def", "ghi",
+                        "jkl", "mno", "pqrs", "tuv", "wxyz"]
         level = 0
-        self.dfs(digits, res, letters, path, level)
+        path = ''
+        self.dfs(digits, level, path, res)
         return res
-    
-    def dfs(self, digits, res, letters, path, level):
+
+    def dfs(self, digits, level, path, res):
         if level == len(digits):
             res.append(path)
             return
-        candidate = letters[int(digits[level])]
-        for i in range(len(candidate)):
-            self.dfs(digits, res, letters, path+candidate[i], level+1)
+        candidates = self.letters[int(digits[level])]
+        for candidate in candidates:
+            self.dfs(digits, level + 1, path + candidate, res)
