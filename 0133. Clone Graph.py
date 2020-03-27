@@ -21,7 +21,7 @@ class Solution:
         self.dfs(node, m)
         return node_copy
     
-    def dfs(self, node, m) -> 'Node':
+    def dfs(self, node, m):
         if not node: return None
         for neighbor  in node.neighbors:
             if neighbor not in m:
