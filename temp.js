@@ -1,25 +1,18 @@
-const promise = New Promise((resolve, reject) => {
-  if (true){
-    resolve('worked');
-  }
-  else{
-    reject('error');
-  }
-})
+select distinct nme, city from tblPerson
+order by city
 
-promise.then(res => console.log(res))
+select columnList from leftTable
+join rightTable
+on leftTable.id = rightTable.id
 
-async function fetchUsers(){
-  const resp = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const data = await resp.json();
-  return data;
-}
+create proc spGetEmployees
+	as 
+	begin
+		select * from tblPerson
+	end
 
-// test 
-// 123123123
-
-
-obj = {afdfd};
-obj2 = { a: 123, b: 456 };
-aaa
-bbb
+select orderID, quantity,
+case 
+	when quantity > 30 then 'bigger > 30'
+end as quantityText
+from orderDetail
