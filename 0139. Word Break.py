@@ -18,7 +18,7 @@ class Solution(object):
             return True
         for i in range(1, len(s)):
             if s[:i] in wordDict and self.dfs(s[i:], wordDict, memo):
-                memo[s[:i]] = True
+                memo[s] = True
                 return True
         memo[s] = False
         return False
