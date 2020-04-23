@@ -7,14 +7,4 @@ def fib(N):
     return memo[-1]
 
 #325202555
-#99llaa
-hahahaha
-hehe
-
-
-dddfggg
-ddd
-
-aa
-
-loll
+RRR
