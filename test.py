@@ -1,11 +1,12 @@
-def fib(N):
-    if N == 0: return 0
-    memo = [0,1]
-    for _ in range(2,N+1):
-        memo = [memo[-1], memo[-1] + memo[-2]]
-
-    return memo[-1]
-
-#325202555
-RRR
-kkkk
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        pre, cur = 0 , 0
+        i = 0
+        n = len(nums)       
+        while cur < n-1:
+            while i <= pre:
+                cur = max(i+nums[i],cur)
+                i+=1
+            if pre == cur: return False            
+            pre = cur
+        return True if cur >= n-1 else False
