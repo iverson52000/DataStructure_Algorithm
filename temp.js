@@ -1,18 +1,13 @@
-select distinct nme, city from tblPerson
-order by city
+const promisify = (item, delay) =>
+  new Promise((resolve) =>
+    setTimeout(resolve, delay, item));
 
-select columnList from leftTable
-join rightTable
-on leftTable.id = rightTable.id
+const a = () => promisify('a', 100);
+const b = () => promisify('b', 5000);
+const c = () => promisify('c', 3000);
 
-create proc spGetEmployees
-	as 
-	begin
-		select * from tblPerson
-	end
-
-select orderID, quantity,
-case 
-	when quantity > 30 then 'bigger > 30'
-end as quantityText
-from orderDetail
+async function parallel() {
+  const promises = [a(), b(), c()];
+  const [output1, output2, output3] = await Promise.all(promises);
+  return `prallel is done: ${output1} ${output2} ${output3}`
+}
