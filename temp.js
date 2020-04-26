@@ -1,13 +1,9 @@
-const promisify = (item, delay) =>
-  new Promise((resolve) =>
-    setTimeout(resolve, delay, item));
 
-const a = () => promisify('a', 100);
-const b = () => promisify('b', 5000);
-const c = () => promisify('c', 3000);
+const multiplyBy = (num1) => (num2) => num1*num2;
 
-async function parallel() {
-  const promises = [a(), b(), c()];
-  const [output1, output2, output3] = await Promise.all(promises);
-  return `prallel is done: ${output1} ${output2} ${output3}`
-}
+const multiplyByTwo = multiplyBy(2);
+const multiplyByFive = multiplyBy(5);
+
+multiplyByTwo(2);
+multiplyByTwo(5);
+multiplyByFive(10);
