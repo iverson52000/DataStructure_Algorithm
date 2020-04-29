@@ -39,3 +39,27 @@ class Solution:
                 if not s: continue	# i doesn’t change!!
                 res += (min(height[i], height[s[-1]])-height[i_pop])*(i-s[-1]-1)
         return res
+
+
+#java stack
+class Solution {
+    public int trap(int[] height) {
+        Stack<Integer> stack = new Stack<>();
+        int res = 0;
+        
+        for (int i = 0; i < height.length; i++) {
+            // Maintain heights in stack are decreasing
+            while (!stack.isEmpty() &&  height[i] > height[stack.peek()]) {
+                int bottom = stack.pop();
+                if (stack.isEmpty()) break;
+                int left = stack.peek();
+                int water = (Math.min(height[i], height[left])-height[bottom])*(i-left-1);
+                res += water;
+            }
+            stack.push(i);
+        }
+        
+        return res;
+    }
+}
+
