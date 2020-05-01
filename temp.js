@@ -1,7 +1,32 @@
+const urls = [
+"https://jsonplaceholder.typicode.com/posts",
+"https://jsonplaceholder.typicode.com/comments",
+"https://jsonplaceholder.typicode.com/users",
+];
 
-const multiplyBy = (num1) => (num2) => num1*num2;
+Promise.all(urls.map((url) => {
+  return fetch(url).then((resp) => resp.json())
+})).then((array) => {
+  console.log('posts', array[0])
+  console.log('comments', array[1])
+  console.log('users', array[2])
+}).catch(console.log('error'))
 
-const multiplyByTwo = multiplyBy(2);
-const multiplyByFive = multiplyBy(5);
 
-multiplyByFive(50);
+const getData = async function(urlArray) {
+  const [posts, comments, users] = await Promise.all((urlArray).map((url) => {
+    return fetch(url).then((resp) => resp.json())
+  }));
+  console.log(posts)
+  console.log(comments)
+  console.log(users)
+};
+
+getData(urls)
+
+
+
+(array) => {
+  console.log('posts', array[0])
+  console.log('comments', array[1])
+  console.log('users', array[2])
