@@ -8,6 +8,34 @@ put(key, value) - Set or insert the value if the key is not already present. Whe
 its capacity, it should invalidate the least recently used item before inserting a new item.
 """
 
+#OrderedDict O(1)
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.m = collections.OrderedDict()
+        self.capacity = capacity
+
+    def get(self, key: int) -> int:
+        if key not in self.m: return -1
+        val = self.m.pop(key)
+        self.m[key] = val
+        return val
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.m: self.m.pop(key)
+        self.m[key] = value
+        if len(self.m) > self.capacity:
+            self.m.popitem(last = False)
+
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+
+
 #Deque + Hashmap O(n)
 
 class LRUCache:
