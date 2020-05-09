@@ -10,3 +10,5 @@ class Solution:
             if pre == cur: return False            
             pre = cur
         return True if cur >= n-1 else False
+
+#test
