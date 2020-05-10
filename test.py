@@ -12,3 +12,4 @@ class Solution:
         return True if cur >= n-1 else False
 
 #test
+#test
