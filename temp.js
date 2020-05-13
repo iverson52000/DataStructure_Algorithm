@@ -30,3 +30,4 @@ getData(urls)
   console.log('posts', array[0])
   console.log('comments', array[1])
   console.log('users', array[2])
+}
