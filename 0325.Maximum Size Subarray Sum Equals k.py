@@ -4,6 +4,9 @@ Given an array nums and a target value k, find the maximum length of a subarray 
 """
 
 # prefix sum+hashmap
+# similiar to 525. Contiguous Array
+# key equation: 
+# prefixSum[right]-prefixSum[left] = k => prefixSum[left] = prefixSum[right]-k
 
 nums = [1, -1, 5, -2, 3], k = 3
 
