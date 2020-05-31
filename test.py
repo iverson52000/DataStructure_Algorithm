@@ -11,5 +11,5 @@ class Solution:
             pre = cur
         return True if cur >= n-1 else False
 
-#20200528
+#20200530
 
