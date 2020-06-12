@@ -6,7 +6,7 @@ Design a data structure that supports all following operations in average O(1) t
 3.	getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
 """
 
-#array+hashmap
+#Array+Hashmap
 
 class RandomizedSet(object):
 
