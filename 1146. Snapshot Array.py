@@ -8,6 +8,7 @@ Implement a SnapshotArray that supports the following interface:
 """
 
 #list of list and binary search
+#6/14/2020
 
 class SnapshotArray:
 
