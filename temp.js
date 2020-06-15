@@ -33,5 +33,3 @@ getData(urls)
   console.log('comments', array[1])
   console.log('users', array[2])
 }
-
-//test
