@@ -13,17 +13,22 @@ class Node:
         self.next = next
         self.random = random
 """
+
+
 class Solution:
+
     def copyRandomList(self, head: 'Node') -> 'Node':
         memo = {}
         return self.copyNode(head, memo)
-    
-    def copyNode(self, cur, memo):       
-        if not cur: return None
-        if cur in memo: return m[cur]
-        
+
+    def copyNode(self, cur, memo):
+        if not cur:
+            return None
+        if cur in memo:
+            return m[cur]
+
         copy = Node(cur.val, None, None)
         memo[cur] = copy
         copy.next = self.copyNode(cur.next, m)
-        copy.random = self.copyNode(cur.random, m)      
+        copy.random = self.copyNode(cur.random, m)
         return copy

@@ -10,13 +10,17 @@ If a car catches up to a car fleet right at the destination point, it will still
 How many car fleets will arrive at the destination?
 """
 
-#array
+# array
+
 
 class Solution:
+
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
         stack = []
         for pos, v in sorted(zip(position, speed))[::-1]:
-            dist = target-pos
-            if not stack: stack.append(dist/v)
-            elif dist/v > stack[-1]: stack.append(dist/v)
+            dist = target - pos
+            if not stack:
+                stack.append(dist / v)
+            elif dist / v > stack[-1]:
+                stack.append(dist / v)
         return len(stack)
