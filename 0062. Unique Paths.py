@@ -5,31 +5,35 @@ The robot can only move either down or right at any point in time. The robot is 
 How many possible unique paths are there?
 """
 
-#dp
+# dp
+
 
 class Solution:
+
     def uniquePaths(self, m, n):
         """
         :type m: int
         :type n: int
         :rtype: int
         """
-        dp = [[1]*n for i in range(m)]
+        dp = [[1] * n for i in range(m)]
         for r in range(1, m):
             for c in range(1, n):
-                dp[r][c] = dp[r-1][c]+dp[r][c-1]
-        return dp[m-1][n-1]
-#1d dp
+                dp[r][c] = dp[r - 1][c] + dp[r][c - 1]
+        return dp[m - 1][n - 1]
+# 1d dp
+
 
 class Solution:
+
     def uniquePaths(self, m, n):
         """
         :type m: int
         :type n: int
         :rtype: int
         """
-        dp = [1]*n
+        dp = [1] * n
         for r in range(1, m):
             for c in range(1, n):
-                dp[c] += dp[c-1]
-        return dp[n-1]
+                dp[c] += dp[c - 1]
+        return dp[n - 1]
