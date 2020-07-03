@@ -12,5 +12,5 @@ class Solution:
         return True if cur >= n-1 else False
 
 
-#2020701
+#2020702
 
