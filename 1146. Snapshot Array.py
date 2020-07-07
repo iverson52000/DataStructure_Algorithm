@@ -7,8 +7,8 @@ Implement a SnapshotArray that supports the following interface:
 •   int get(index, snap_id) returns the value at the given index, at the time we took the snapshot with the given snap_id
 """
 
-#list of list and binary search
-#6/14/2020
+# list of list and binary search
+
 
 class SnapshotArray:
 
@@ -21,32 +21,33 @@ class SnapshotArray:
 
     def snap(self):
         self.snap_id += 1
-        return self.snap_id-1
+        return self.snap_id - 1
 
     def get(self, index, snap_id):
-        i = bisect.bisect(self.A[index], [snap_id+1])-1
+        i = bisect.bisect(self.A[index], [snap_id + 1]) - 1
         return self.A[index][i][1]
-        
-#nums hashmap and snap array
+
+# nums hashmap and snap array
+
 
 class SnapshotArray(object):
 
     def __init__(self, length):
         self.nums = {}
-        self.snaps = []   
+        self.snaps = []
 
     def set(self, index, val):
         self.nums[index] = val
 
     def snap(self):
         self.snaps.append(self.nums.copy())
-        return len(self.snaps)-1
+        return len(self.snaps) - 1
 
     def get(self, index, snap_id):
         if index in self.snaps[snap_id]:
             return self.snaps[snap_id][index]
-        else: return 0
-        
+        else:
+            return 0
 
 
 # Your SnapshotArray object will be instantiated and called as such:
@@ -54,4 +55,3 @@ class SnapshotArray(object):
 # obj.set(index,val)
 # param_2 = obj.snap()
 # param_3 = obj.get(index,snap_id)
-

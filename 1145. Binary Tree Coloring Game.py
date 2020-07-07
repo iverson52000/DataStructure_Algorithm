@@ -10,7 +10,8 @@ of their color (red if player 1, blue if player 2) and colors an uncolored neigh
 (either the left child, right child, or parent of the chosen node.)
 If (and only if) a player cannot choose such a node in this way, they must pass their turn.  If both 
 players pass their turn, the game ends, and the winner is the player that colored more nodes.
-You are the second player.  If it is possible to choose such a y to ensure you win the game, return true.  If it is not possible, return false.
+You are the second player.  If it is possible to choose such a y to ensure you win the game, return true.  
+If it is not possible, return false.
 """
 
 #dfs
