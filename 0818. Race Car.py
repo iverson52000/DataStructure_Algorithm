@@ -8,9 +8,11 @@ For example, after commands "AAR", your car goes to positions 0->1->3->3, and yo
 Now for some target position, say the length of the shortest sequence of instructions to get there.
 """
 
-#brute force bfs
+# brute force bfs
+
 
 class Solution:
+
     def racecar(self, target: int) -> int:
         q = collections.deque()
         q.append((0, 1))
@@ -21,10 +23,10 @@ class Solution:
                 pos, speed = q.popleft()
                 if pos == target:
                     return res
-                if not (pos+speed, speed*2) in visited:
-                    q.append((pos+speed, speed*2))
-                    visited.add((pos+speed, speed*2))
+                if not (pos + speed, speed * 2) in visited:
+                    q.append((pos + speed, speed * 2))
+                    visited.add((pos + speed, speed * 2))
                 if not (pos, -1 if speed > 0 else 1) in visited:
                     q.append((pos, -1 if speed > 0 else 1))
                     visited.add((pos, -1 if speed > 0 else 1))
-            res += 1 
+            res += 1
