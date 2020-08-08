@@ -26,3 +26,26 @@ class Solution:
             path.append(nums[i])
             self.dfs(res, path, i + 1, nums)
             path.pop()
+            
+
+# Write dfs inside of subsets memthod
+
+
+class Solution:
+
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        if not nums:
+            return []
+        path = []
+        level = 0
+        res = []
+
+        def dfs(nums, path, level):
+            res.append(path.copy())
+            for i in range(level, len(nums)):
+                path.append(nums[i])
+                dfs(nums, path, i + 1)
+                path.pop()
+
+        dfs(nums, path, level)
+        return res
