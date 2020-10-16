@@ -21,12 +21,15 @@ class Solution:
     # @return a boolean
     def searchMatrix(self, matrix, target) -> bool:
         if not matrix or not matrix[0]: return False
+
         n_r = len(matrix); n_c = len(matrix[0])
         left = 0; right = n_r*n_c-1
+
         while left <= right:
             mid = (left+right)//2
             num = matrix[mid//n_c][mid%n_c]
             if num == target: return True
             if num > target: right = mid-1
             else: left = mid+1
+            
         return False
