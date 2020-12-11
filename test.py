@@ -9,8 +9,8 @@ class Solution:
                 i += 1
             if pre == cur:
                 return False
-            pre = cur
+            pre = curhello
         return True if cur >= n-1 else False
 
 
-#20201210
+#20201211
