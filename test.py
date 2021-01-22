@@ -13,4 +13,4 @@ class Solution:
         return True if cur >= n-1 else False
 
 
-#20210121
+#20210122
