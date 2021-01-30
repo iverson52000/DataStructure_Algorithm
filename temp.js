@@ -30,3 +30,4 @@ const getData = async function (urlArray) {
 };
 
 getData(urls);
+
