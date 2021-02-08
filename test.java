@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * test
  */
@@ -6,5 +8,7 @@ public class test {
         String text = "hello";
 
         System.out.println(text);
+        Scanner a = new Scanner(System.in);
+
     }
 }
