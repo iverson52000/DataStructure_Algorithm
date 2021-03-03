@@ -13,7 +13,7 @@ class Solution:
         return True if cur >= n-1 else False
 
 
-# 20210302
+# 20210303
 
 
 class Solution:
