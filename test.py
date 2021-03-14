@@ -1,3 +1,6 @@
+from heap import *
+
+
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         pre, cur = 0, 0
