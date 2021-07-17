@@ -1,4 +1,5 @@
-from heap import *
+from typing import List
+from heapq import *
 
 
 class Solution:
@@ -16,4 +17,4 @@ class Solution:
         return True if cur >= n-1 else False
 
 
-# 20210714
+# 20210716
