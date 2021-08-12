@@ -1,12 +1,7 @@
-// const x = 10;
-const x = [1, 2, 3, 4];
-// const x = { member: "foo" };
+const numbers = [];
 
-const modify = (input) => {
-  //   input = 50;
-  input.push(5);
-  //   input.member = "bar";
-};
+numbers.sort(function (a, b) {
+  return a - b;
+});
 
-modify(x);
-console.log(x);
+console.log(numbers);
