@@ -19,15 +19,18 @@ func main() {
 	time.Sleep(5 * time.Second)
 }
 
-func worker(ctx context.Context, name string) {
-	for {
-		select {
-		case <-ctx.Done():
-			fmt.Println(name, "got the stop channel")
-			return
-		default:
-			fmt.Println(name, "still working")
-			time.Sleep(1 * time.Second)
+func numSquares(n int) int {
+	res := make([]int, n+1)
+
+	for i := 1; i <= n; i++ {
+		res[i] = n
+
+		for j := 1; j*j <= i; j++ {
+			if res[i-(j*j)]+1 < res[i] {
+				res[i] = res[i-(j*j)] + 1
+			}
 		}
 	}
+
+	return res[n]
 }
