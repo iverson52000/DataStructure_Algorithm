@@ -19,18 +19,15 @@ func main() {
 	time.Sleep(5 * time.Second)
 }
 
-func numSquares(n int) int {
-	res := make([]int, n+1)
+func findDuplicate(nums []int) int {
+	m := make([]int, len(nums))
 
-	for i := 1; i <= n; i++ {
-		res[i] = n
-
-		for j := 1; j*j <= i; j++ {
-			if res[i-(j*j)]+1 < res[i] {
-				res[i] = res[i-(j*j)] + 1
-			}
+	for _, num := range nums {
+		m[num]++
+		if m[num] > 1 {
+			return num
 		}
 	}
 
-	return res[n]
+	return -1
 }
