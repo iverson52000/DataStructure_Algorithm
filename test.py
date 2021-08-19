@@ -1,20 +1,15 @@
-from typing import List
-from heapq import *
+import threading
+import time
+import queue
 
 
-class Solution:
-    def canJump(self, nums: List[int]) -> bool:
-        pre, cur = 0, 0
-        i = 0
-        n = len(nums)
-        while cur < n-1:
-            while i <= pre:
-                cur = max(i+nums[i], cur)
-                i += 1
-            if pre == cur:
-                return False
-            pre = cur
-        return True if cur >= n-1 else False
+def fn(nums):
+    has_pos = False
+    has_neg = False
+    for num in nums:
+        has_pos = num > 0
+        has_neg = num < 0
+    return (has_pos, has_neg)
 
 
-# 20210818
+print(fn([0, 1, 2]))
