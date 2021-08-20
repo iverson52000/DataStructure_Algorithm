@@ -19,15 +19,38 @@ func main() {
 	time.Sleep(5 * time.Second)
 }
 
-func findDuplicate(nums []int) int {
-	m := make([]int, len(nums))
+func min(x, y int) int {
+	if x < y {
+		return x
+	} else {
+		return y
+	}
+}
 
-	for _, num := range nums {
-		m[num]++
-		if m[num] > 1 {
-			return num
+func coinChange(coins []int, amount int) int {
+	INF := 65535
+	size := amount + 1
+
+	dp := make([]int, size)
+
+	for idx, _ := range dp {
+		dp[idx] = INF
+	}
+
+	dp[0] = 0
+
+	for i := 1; i <= amount; i += 1 {
+		for _, coin := range coins {
+			if coin <= i {
+				dp[i] = min(dp[i-coin]+1, dp[i])
+			}
 		}
 	}
 
-	return -1
+	if dp[amount] == INF {
+		return -1
+	} else {
+		return dp[amount]
+	}
+
 }
