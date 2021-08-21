@@ -27,30 +27,23 @@ func min(x, y int) int {
 	}
 }
 
-func coinChange(coins []int, amount int) int {
-	INF := 65535
-	size := amount + 1
+func maxSlidingWindow(nums []int, k int) []int {
+	res := []int{}
+	q := []int{}
 
-	dp := make([]int, size)
+	for i := 0; i < len(nums); i++ {
+		if len(q) > 0 && q[0] <= i-k {
+			q = q[1:]
+		}
+		for len(q) > 0 && nums[q[len(q)-1]] < nums[i] {
+			q = q[:len(q)-1]
+		}
 
-	for idx, _ := range dp {
-		dp[idx] = INF
-	}
-
-	dp[0] = 0
-
-	for i := 1; i <= amount; i += 1 {
-		for _, coin := range coins {
-			if coin <= i {
-				dp[i] = min(dp[i-coin]+1, dp[i])
-			}
+		q = append(q, i)
+		if i >= k-1 {
+			res = append(res, nums[q[0]])
 		}
 	}
 
-	if dp[amount] == INF {
-		return -1
-	} else {
-		return dp[amount]
-	}
-
+	return res
 }
