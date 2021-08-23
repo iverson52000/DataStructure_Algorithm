@@ -27,23 +27,33 @@ func min(x, y int) int {
 	}
 }
 
-func maxSlidingWindow(nums []int, k int) []int {
-	res := []int{}
-	q := []int{}
+func lengthOfLIS(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	dp := make([]int, len(nums))
+	for i := range dp {
+		dp[i] = 1
+	}
 
-	for i := 0; i < len(nums); i++ {
-		if len(q) > 0 && q[0] <= i-k {
-			q = q[1:]
+	res := 1
+	for i := 1; i < len(nums); i++ {
+		for j := 0; j < i; j++ {
+			if nums[i] > nums[j] {
+				dp[i] = max(dp[j]+1, dp[i])
+			}
 		}
-		for len(q) > 0 && nums[q[len(q)-1]] < nums[i] {
-			q = q[:len(q)-1]
-		}
-
-		q = append(q, i)
-		if i >= k-1 {
-			res = append(res, nums[q[0]])
+		if dp[i] > res {
+			res = dp[i]
 		}
 	}
 
 	return res
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
