@@ -19,6 +19,7 @@
     const ul = document.createElement("ul");
     const resp = await fetch(URL);
     const data = await resp.json();
+
     data.data.forEach((obj) => {
       const li = document.createElement("li");
       li.innerHTML = obj.quote;
