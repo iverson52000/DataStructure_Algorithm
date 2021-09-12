@@ -4,54 +4,66 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Document</title>
   </head>
   <body>
-    <div class="container"></div>
+    <div id="content"></div>
   </body>
 </html>
 
-<script>
-  const container = document.querySelector(".container");
-
-  const fetchQuotes = async (page = 1, limit = 15) => {
-    try {
-      const URL = `https://api.javascripttutorial.net/v1/quotes/?page=${page}&limit=${limit}`;
-      const ul = document.createElement("ul");
-      const resp = await fetch(URL);
-      const data = await resp.json();
-
-      data.data.forEach((obj) => {
-        const li = document.createElement("li");
-        li.innerHTML = obj.quote;
-        ul.appendChild(li);
-      });
-
-      container.append(ul);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  fetchQuotes();
-  let curPage = 2;
-
-  window.addEventListener("scroll", () => {
-    if (
-      window.scrollY + window.innerHeight >=
-      document.documentElement.scrollHeight
-    ) {
-      fetchQuotes(curPage);
-      curPage += 1;
-    }
-  });
-</script>
-
 <style>
-  body {
-    font-size: 32px;
-  }
-  li {
-    margin-top: 50px;
+  #content {
+    display: flex;
+    flex-direction: column;
   }
 </style>
+
+<script>
+  const members = [
+    {
+      name: "Bill Denbrough",
+      id: 1,
+    },
+    {
+      name: "Ben Hanscom",
+      id: 2,
+    },
+    {
+      name: "Mike Hanlon",
+      id: 3,
+    },
+    {
+      name: "Richie Tozier",
+      id: 4,
+    },
+    {
+      name: "Beverly Marsh",
+      id: 5,
+    },
+    {
+      name: "Eddie Kas‍‍‌‌‍‍‍‍‌‌‍‍‌‍‍‌‌‍pbrak",
+      id: 6,
+    },
+    {
+      name: "Stan Uris",
+      id: 7,
+    },
+  ];
+  const contentElement = document.getElementById("content");
+  const fragment = new DocumentFragment();
+
+  members.forEach((member) => {
+    const link = `profile.jsp?id=${member.id}`;
+    const aElement = document.createElement("a");
+
+    aElement.setAttribute("href", link);
+    aElement.innerText = member.name;
+    fragment.appendChild(aElement);
+  });
+
+  contentElement.appendChild(fragment);
+</script>
