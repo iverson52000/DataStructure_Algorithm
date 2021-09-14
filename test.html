@@ -15,13 +15,6 @@
   </body>
 </html>
 
-<style>
-  #content {
-    display: flex;
-    flex-direction: column;
-  }
-</style>
-
 <script>
   const members = [
     {
@@ -53,17 +46,31 @@
       id: 7,
     },
   ];
-  const contentElement = document.getElementById("content");
+  const content = document.getElementById("content");
   const fragment = new DocumentFragment();
 
   members.forEach((member) => {
     const link = `profile.jsp?id=${member.id}`;
-    const aElement = document.createElement("a");
+    const a = document.createElement("a");
 
-    aElement.setAttribute("href", link);
-    aElement.innerText = member.name;
-    fragment.appendChild(aElement);
+    a.setAttribute("href", link);
+    a.innerText = member.name;
+    fragment.appendChild(a);
   });
 
-  contentElement.appendChild(fragment);
+  content.appendChild(fragment);
+
+  const parent = document.getElementById("content");
+  parent.addEventListener("click", (event) => {
+    if (event.target.className === "child") {
+      console.log("test");
+    }
+  });
 </script>
+
+<style>
+  #content {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
