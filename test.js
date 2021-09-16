@@ -1,43 +1,23 @@
-// Given
-const endorsements = [
-  { skill: "css", user: "Bill" },
-  { skill: "javascript", user: "Chad" },
-  { skill: "javascript", user: "Bill" },
-  { skill: "css", user: "Sue" },
-  { skill: "javascript", user: "Sue" },
-  { skill: "html", user: "Sue" },
-];
+const nums = [0, -1, 3, 4, -5, 0];
 
-const skills = [];
+const maxSubArray = (nums) => {
+  const res = { result: nums[0], indexes: [0, 0] };
+  let curSum = nums[0];
 
-const aggregateSkills = (endorsements) => {
-  const obj = {};
-
-  for (const endorsement of endorsements) {
-    if (!obj[endorsement.skill]) {
-      obj[endorsement.skill] = {
-        skill: endorsement.skill,
-        users: [endorsement.user],
-        count: 1,
-      };
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > curSum + nums[i]) {
+      curSum = nums[i];
+      res.indexes[0] = i;
     } else {
-      obj[endorsement.skill].users.push(endorsement.user);
-      obj[endorsement.skill].count += 1;
+      curSum += nums[i];
+    }
+
+    if (curSum > res.result) {
+      res.result = curSum;
+      res.indexes[1] = i;
     }
   }
-
-  for (const val of Object.values(obj)) {
-    skills.push(val);
-  }
-
-  skills.sort((a, b) => b.count - a.count);
+  return res;
 };
 
-aggregateSkills(endorsements);
-// Result
-console.log(skills);
-// [
-//   { skill: 'javascript', users: ['Chad', 'Bill', 'Sue'], count: 3 },
-//   { skill: 'css', users: ['Bill', 'Sue'], count: 2 },
-//   { skill: 'html', users: ['Sue'], count: 1 },
-// ]
+console.log(maxSubArray(nums));

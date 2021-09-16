@@ -11,66 +11,100 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="content"></div>
+    <div class="card">
+      <img src="img.jpg" alt="John" style="width: 100%" />
+      <h1>John Doe</h1>
+      <p class="title">CEO & Founder, Example</p>
+      <p>Harvard University</p>
+      <a href="#"><i class="fa fa-dribbble"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <p><button>Contact</button></p>
+      <i onclick="like(this)" class="fa fa-thumbs-up"></i>
+      <form action="url" method="POST">
+        <div class="comment-container">
+          <label for="say">Comment</label>
+          <input name="comment" id="say" value="Cool!" />
+          <button>Submit</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
 
-<script>
-  const members = [
-    {
-      name: "Bill Denbrough",
-      id: 1,
-    },
-    {
-      name: "Ben Hanscom",
-      id: 2,
-    },
-    {
-      name: "Mike Hanlon",
-      id: 3,
-    },
-    {
-      name: "Richie Tozier",
-      id: 4,
-    },
-    {
-      name: "Beverly Marsh",
-      id: 5,
-    },
-    {
-      name: "Eddie Kas‍‍‌‌‍‍‍‍‌‌‍‍‌‍‍‌‌‍pbrak",
-      id: 6,
-    },
-    {
-      name: "Stan Uris",
-      id: 7,
-    },
-  ];
-  const content = document.getElementById("content");
-  const fragment = new DocumentFragment();
-
-  members.forEach((member) => {
-    const link = `profile.jsp?id=${member.id}`;
-    const a = document.createElement("a");
-
-    a.setAttribute("href", link);
-    a.innerText = member.name;
-    fragment.appendChild(a);
-  });
-
-  content.appendChild(fragment);
-
-  const parent = document.getElementById("content");
-  parent.addEventListener("click", (event) => {
-    if (event.target.className === "child") {
-      console.log("test");
-    }
-  });
-</script>
-
 <style>
-  #content {
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+
+  button:hover,
+  a:hover {
+    opacity: 0.7;
+  }
+
+  .comment-container {
     display: flex;
-    flex-direction: column;
+    align-items: center;
   }
 </style>
+
+<script>
+  const like = (x) => {
+    x.classList.toggle("fa-thumbs-down");
+  };
+
+  // const postRequest = () => {
+  //   var url = "https://reqbin.com/echo/post/json";
+
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open("POST", url);
+
+  //   xhr.setRequestHeader("Accept", "application/json");
+  //   xhr.setRequestHeader("Content-Type", "application/json");
+
+  //   xhr.onreadystatechange = function () {
+  //     if (xhr.readyState === 4) {
+  //       console.log(xhr.status);
+  //       console.log(xhr.responseText);
+  //     }
+  //   };
+
+  //   var data = `{
+  //     "Id": 78912,
+  //     "Customer": "Jason Sweet",
+  //     "Quantity": 1,
+  //     "Price": 18.00
+  //   }`;
+
+  //   xhr.send(data);
+  // };
+</script>
