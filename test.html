@@ -1,110 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="card">
-      <img src="img.jpg" alt="John" style="width: 100%" />
-      <h1>John Doe</h1>
-      <p class="title">CEO & Founder, Example</p>
-      <p>Harvard University</p>
-      <a href="#"><i class="fa fa-dribbble"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <p><button>Contact</button></p>
-      <i onclick="like(this)" class="fa fa-thumbs-up"></i>
-      <form action="url" method="POST">
-        <div class="comment-container">
-          <label for="say">Comment</label>
-          <input name="comment" id="say" value="Cool!" />
-          <button>Submit</button>
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
+// https://i.imgur.com/s5RMC3m.png
+
+// http://imgur.com/iVi7UwY
+
+// `/miniprofile?id=x` gives the JSON response.
+
+//
+
+<div class = "comment" onMouseOver = "hoverOver">
+
+<a href="" data-id=1>Jeff<a/>
+
+<a href="" >Jhon<a/>
+
+<a href="" >Jeff<a/>
+
+<div class="tooltip">
+
+<div class="tooltip-container">
+
+<img src="url" alt={name}/>
+
+<h4 class="name">{name}</h4>
+
+<h5>{title}</h5>
+
+</div>
+
+</div>
+
+<div class = "comment">
 
 <style>
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: auto;
-    text-align: center;
-    font-family: arial;
-  }
 
-  .title {
-    color: grey;
-    font-size: 18px;
-  }
+.tooltip {
 
-  button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
+visibility: hidden
 
-  a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-  }
+position: relative
 
-  button:hover,
-  a:hover {
-    opacity: 0.7;
-  }
+top: 50px
 
-  .comment-container {
-    display: flex;
-    align-items: center;
-  }
-</style>
+}
+
+.tooltip .tooltip-container{
+
+}
+
+.tooltip:hover .tooltip-container{
+
+visibility: visible
+
+}
+
+<style>
 
 <script>
-  const like = (x) => {
-    x.classList.toggle("fa-thumbs-down");
-  };
 
-  // const postRequest = () => {
-  //   var url = "https://reqbin.com/echo/post/json";
+const fetchProfile = async(x) => {
 
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.open("POST", url);
+try {
 
-  //   xhr.setRequestHeader("Accept", "application/json");
-  //   xhr.setRequestHeader("Content-Type", "application/json");
+const URL = `http://imgur.com/iVi7UwY/miniprofile?id=${x}`
 
-  //   xhr.onreadystatechange = function () {
-  //     if (xhr.readyState === 4) {
-  //       console.log(xhr.status);
-  //       console.log(xhr.responseText);
-  //     }
-  //   };
+const resp = await fetch(URL)
 
-  //   var data = `{
-  //     "Id": 78912,
-  //     "Customer": "Jason Sweet",
-  //     "Quantity": 1,
-  //     "Price": 18.00
-  //   }`;
+const data = await resp.json()
 
-  //   xhr.send(data);
-  // };
+const name = document.getElementByClass("name")
+
+name.innerHTML = data.name
+
+} catch(error) {
+
+console.log(error)
+
+}
+
+}
+
+const id = document.getElementByClass("name")
+
+fetchProfile()
+
+const hoverOver = (event) => {
+
+if (event.target.class = "a") {
+
+const id = dataSet('data-id')
+
+fetchProfile(id)
+
+const [x, y] = event.target.position
+
+const tooltip = document.getElementByClass("tooltip")
+
+tooltip.style = `top: ${y}`
+
+}
+
+}
+
 </script>
+
+{
+
+name: "Jeff",
+
+title: "CEO",
+
+imgURL: "abc.com"
+
+}
