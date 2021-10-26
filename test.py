@@ -11,29 +11,25 @@ import queue
 #         self.left = left
 #         self.right = right
 class Solution:
-    def longestConsecutive(self, root: Optional[TreeNode]) -> int:
-        def dfs(node):
-            if not node:
-                return (0, 0)
+    def minWindow(self, s1: str, s2: str) -> str:
+        m, n = len(s1), len(s2)
+        dp = [[float('inf')]*(m+1) for i in range(n+1)]
 
-            inc, dec = 1, 1
-            l_inc, l_dec = dfs(node.left)
-            r_inc, r_dec = dfs(node.right)
+        for i in range(1, n+1):
+            for j in range(1, m+1):
+                if s1[j-1] == s2[i-1]:
+                    if i == 1:
+                        dp[i][j] = 1
+                    else:
+                        dp[i][j] = dp[i-1][j-1]+1
+                else:
+                    dp[i][j] = dp[i][j-1]+1
 
-            if node.left:
-                if node.left.val == node.val + 1:
-                    inc = max(inc, 1 + l_inc)
-                if node.left.val == node.val - 1:
-                    dec = max(dec, 1 + l_dec)
-            if node.right:
-                if node.right.val == node.val + 1:
-                    inc = max(inc, 1 + r_inc)
-                if node.right.val == node.val - 1:
-                    dec = max(dec, 1 + r_dec)
-            res[0] = max(res[0], inc + dec - 1)
-            return (inc, dec)
+        res = min(dp[-1])
 
-        res = [0]
-        dfs(root)
+        if res == float('inf'):
+            return ''
 
-        return res[0]
+        for i in range(1, m+1):
+            if dp[-1][i] == res:
+                return s1[i-res:i]
