@@ -5,3 +5,5 @@ from collections import *
 
 m = OrderedDict()
 m.popitem()
+
+map
