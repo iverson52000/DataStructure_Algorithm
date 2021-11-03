@@ -9,3 +9,5 @@ card2 = tuple([2, 3, 1, 2])
 card3 = tuple([3, 1, 2, 3])
 
 print(card1 != card2 != card3)
+
+# test
