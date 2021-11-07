@@ -3,37 +3,25 @@ import threading
 import time
 import queue
 from collections import *
+from typing import List
 
 
-graph = collections.defaultdict(list)
-   for u, v in roads:
-        graph[u].append(v)
-        graph[v].append(u)
+class Solution:
+    def longestLine(self, mat: List[List[int]]) -> int:
+        if not mat or not mat[0]:
+            return 0
 
-    # init variables
-    m = len(targetPath)
-    dp = [[m] * n for _ in range(m)]
-    prev = [[0] * n for _ in range(m)]
+        res = 0
+        dp = collections.defaultdict(int)
 
-    # populate dp
-    for v in range(n):
-        dp[0][v] = (names[v] != targetPath[0])
-    for i in range(1, m):
-        for v in range(n):
-            for u in graph[v]:
-                if dp[i-1][u] < dp[i][v]:
-                    dp[i][v] = dp[i-1][u]
-                    prev[i][v] = u
-            dp[i][v] += (names[v] != targetPath[i])
+        for r in range(len(mat)):
+            for c in range(len(mat[0])):
+                if mat[r][c]:
+                    dp[(r, c, 0)] = dp[(r, c - 1, 0)] + 1
+                    dp[(r, c, 1)] = dp[(r - 1, c, 1)] + 1
+                    dp[(r, c, 2)] = dp[(r - 1, c - 1, 2)] + 1
+                    dp[(r, c, 3)] = dp[(r - 1, c + 1, 3)] + 1
+                    res = max(res, dp[(r, c, 0)], dp[(r, c, 1)],
+                              dp[(r, c, 2)], dp[(r, c, 3)])
 
-    # re-construct path
-    path, min_dist = [0], m
-    for v in range(n):
-        if dp[-1][v] < min_dist:
-            min_dist = dp[-1][v]
-            path[0] = v
-    for i in range(m - 1, 0, -1):
-        u = prev[i][path[-1]]
-        path.append(u)
-
-    return path[::-1]
+        return res
