@@ -4,24 +4,25 @@ import time
 import queue
 from collections import *
 from typing import List
+import random
 
 
 class Solution:
-    def longestLine(self, mat: List[List[int]]) -> int:
-        if not mat or not mat[0]:
-            return 0
+    def strangePrinter(self, s: str) -> int:
+        memo = {}
 
-        res = 0
-        dp = collections.defaultdict(int)
+        def dfs(l, r) -> int:
+            if l > r:
+                return 0
+            if (l, r) not in memo:
+                res = dfs(l+1, r) + 1
+                for k in range(l+1, r+1):
+                    if s[k] == s[l]:
+                        res = min(res, dfs(l, k-1) + dfs(k+1, r))
+                memo[(l, r)] = res
+            return memo[(l, r)]
 
-        for r in range(len(mat)):
-            for c in range(len(mat[0])):
-                if mat[r][c]:
-                    dp[(r, c, 0)] = dp[(r, c - 1, 0)] + 1
-                    dp[(r, c, 1)] = dp[(r - 1, c, 1)] + 1
-                    dp[(r, c, 2)] = dp[(r - 1, c - 1, 2)] + 1
-                    dp[(r, c, 3)] = dp[(r - 1, c + 1, 3)] + 1
-                    res = max(res, dp[(r, c, 0)], dp[(r, c, 1)],
-                              dp[(r, c, 2)], dp[(r, c, 3)])
+        return dfs(0, len(s) - 1)
 
-        return res
+
+random.ra
