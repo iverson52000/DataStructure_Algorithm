@@ -8,21 +8,24 @@ import random
 
 
 class Solution:
-    def strangePrinter(self, s: str) -> int:
-        memo = {}
+    def shortestDistanceColor(self, colors: List[int], queries: List[List[int]]) -> List[int]:
+        m = collections.defaultdict(list)
 
-        def dfs(l, r) -> int:
-            if l > r:
-                return 0
-            if (l, r) not in memo:
-                res = dfs(l+1, r) + 1
-                for k in range(l+1, r+1):
-                    if s[k] == s[l]:
-                        res = min(res, dfs(l, k-1) + dfs(k+1, r))
-                memo[(l, r)] = res
-            return memo[(l, r)]
+        for i, v in enumerate(colors):
+            m[v].append(i)
 
-        return dfs(0, len(s) - 1)
+        res = []
+        for i, c in queries:
+            if c in m:
+                # search where the element can be inserted
+                index = bisect.bisect_left(m[c], i)
+                if index == 0:
+                    res.append(abs(i-m[c][0]))
+                elif index >= len(m[c]):
+                    res.append(i-m[c][-1])
+                else:
+                    res.append(min(abs(i-m[c][index-1]), abs(m[c][index]-i)))
+            else:
+                res.append(-1)
 
-
-random.ra
+        return res
