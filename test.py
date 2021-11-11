@@ -8,26 +8,29 @@ import random
 
 
 class Solution:
-    def shortestDistanceColor(self, colors: List[int], queries: List[List[int]]) -> List[int]:
-        m = collections.defaultdict(list)
+    def sumOfDistancesInTree(self, n: int, edges: List[List[int]]) -> List[int]:
+        g = collections.defaultdict(set)
+        res = [0] * n
+        counts = [1] * n
 
-        for i, v in enumerate(colors):
-            m[v].append(i)
+        for i, j in edges:
+            g[i].add(j)
+            g[j].add(i)
 
-        res = []
-        for i, c in queries:
-            if c in m:
-                # search where the element can be inserted
-                index = bisect.bisect_left(m[c], i)
-                if index == 0:
-                    res.append(abs(i-m[c][0]))
-                elif index >= len(m[c]):
-                    res.append(i-m[c][-1])
-                else:
-                    res.append(min(abs(i-m[c][index-1]), abs(m[c][index]-i)))
-            else:
-                res.append(-1)
+        def dfs(root, pre):
+            for i in g[root]:
+                if i != pre:
+                    dfs(i, root)
+                    counts[root] += counts[i]
+                    res[root] += res[i] + counts[i]
+
+        def dfs2(root, pre):
+            for i in g[root]:
+                if i != pre:
+                    res[i] = res[root] - counts[i] + n - counts[i]
+                    dfs2(i, root)
+
+        dfs(0, -1)
+        dfs2(0, -1)
 
         return res
-
-# 20211110
