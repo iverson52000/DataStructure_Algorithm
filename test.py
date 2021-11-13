@@ -7,30 +7,39 @@ from typing import List
 import random
 
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution:
-    def sumOfDistancesInTree(self, n: int, edges: List[List[int]]) -> List[int]:
-        g = collections.defaultdict(set)
-        res = [0] * n
-        counts = [1] * n
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        self.cnt_p = 0
+        self.cnt_q = 0
 
-        for i, j in edges:
-            g[i].add(j)
-            g[j].add(i)
+        def dfs(self, root, p, q) -> TreeNoder:
+            if not root:
+                return None
 
-        def dfs(root, pre):
-            for i in g[root]:
-                if i != pre:
-                    dfs(i, root)
-                    counts[root] += counts[i]
-                    res[root] += res[i] + counts[i]
+            leftRes = self.dfs(root.left, p, q)
+            rightRes = self.dfs(root.right, p, q)
 
-        def dfs2(root, pre):
-            for i in g[root]:
-                if i != pre:
-                    res[i] = res[root] - counts[i] + n - counts[i]
-                    dfs2(i, root)
+            if root.val == p.val:
+                self.countp += 1
+                return root
+            if root.val == q.val:
+                self.cnt_q += 1
+                return root
+            if leftRes and rightRes:
+                return root
 
-        dfs(0, -1)
-        dfs2(0, -1)
+        return leftRes or rightRes
+
+        res = self.dfs(root, p, q)
+
+        if not self.countp or not self.cnt_q:
+            return None
 
         return res
