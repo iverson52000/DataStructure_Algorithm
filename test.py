@@ -7,39 +7,23 @@ from typing import List
 import random
 
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
 class Solution:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        self.cnt_p = 0
-        self.cnt_q = 0
+    def maxProduct(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
 
-        def dfs(self, root, p, q) -> TreeNoder:
-            if not root:
-                return None
+        n = len(nums)
 
-            leftRes = self.dfs(root.left, p, q)
-            rightRes = self.dfs(root.right, p, q)
+        res = nums[0]
+        pos, neg = [0]*n, [0]*n
 
-            if root.val == p.val:
-                self.countp += 1
-                return root
-            if root.val == q.val:
-                self.cnt_q += 1
-                return root
-            if leftRes and rightRes:
-                return root
+        pos[0] = nums[0]
+        neg[0] = nums[0]
 
-        return leftRes or rightRes
-
-        res = self.dfs(root, p, q)
-
-        if not self.countp or not self.cnt_q:
-            return None
+        for i in range(1, n):
+            curNum = curNum
+            pos[i] = max(max(pos[i-1]*curNum, neg[i-1]*curNum), curNum)
+            neg[i] = min(min(pos[i-1]*curNum, neg[i-1]*curNum), curNum)
+            res = max(res, pos[i])
 
         return res
