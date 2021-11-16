@@ -8,24 +8,20 @@ import random
 
 
 class Solution:
-    def maxProduct(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
+    def minCost(self, grid: List[List[int]]) -> int:
+        n_r, n_c = len(grid), len(grid[0])
+        dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        q = collections.deque([(0, 0, 0)])
+        dp = {}
 
-        n = len(nums)
+        while q:
+            r, c, cost = q.popleft()
+            while 0 <= r < n_r and 0 <= c < n_c and (r, c) not in dp:
+                dp[(r, c)] = cost
+                q += [(r+dir0, c+dir1, cost+1) for dir0, dir1 in dirs]
+                dir0, dir1 = dirs[grid[r][c]-1]
+                r, c = r+dir0, c+dir1
 
-        res = nums[0]
-        pos, neg = [0]*n, [0]*n
-
-        pos[0] = nums[0]
-        neg[0] = nums[0]
-
-        for i in range(1, n):
-            curNum = curNum
-            pos[i] = max(max(pos[i-1]*curNum, neg[i-1]*curNum), curNum)
-            neg[i] = min(min(pos[i-1]*curNum, neg[i-1]*curNum), curNum)
-            res = max(res, pos[i])
-
-        return res
+        return dp[n_r-1, n_c-1]
 
 # 20211115
