@@ -7,21 +7,63 @@ from typing import List
 import random
 
 
-class Solution:
-    def minCost(self, grid: List[List[int]]) -> int:
-        n_r, n_c = len(grid), len(grid[0])
-        dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-        q = collections.deque([(0, 0, 0)])
-        dp = {}
+# APIs
+# list_folder("/home/airtable") returns ["Backups", ".bashrc", "Photos", "profile.jpeg", ...]
+# is_folder("/home/airtable/Backups") returns true
+# is_folder("/home/airtable/.bashrc") returns false
 
-        while q:
-            r, c, cost = q.popleft()
-            while 0 <= r < n_r and 0 <= c < n_c and (r, c) not in dp:
-                dp[(r, c)] = cost
-                q += [(r+dir0, c+dir1, cost+1) for dir0, dir1 in dirs]
-                dir0, dir1 = dirs[grid[r][c]-1]
-                r, c = r+dir0, c+dir1
+def list_folder():
+    pass
 
-        return dp[n_r-1, n_c-1]
+
+def is_folder():
+    pass
+
+
+def getContent():
+    pass
+
+
+def find_dupes(root_path: str) -> List[List[str]]:
+    m = collections.defaultdict(list)
+    q = collections.deque([root_path])
+
+    while q:
+        rootPath = q.popleft()
+        paths = [rootPath+'/'+item for item in list_folder(rootPath)]
+
+        for path in paths:
+            if not is_folder(path):
+                fileName = path.split('/')[-1]
+                # get content?
+                content = getContent(fileName)
+                m[content].append(path)
+
+            nextPath = rootPath+'/'+path
+            q.append(nextPath)
+
+    return [val for val in m.values() if len(val) > 1]
+
+
+def find_dupes(root_path: str) -> List[List[str]]:
+    m = collections.defaultdict(list)
+
+    def dfs(rootPath: str):
+        if not is_folder(rootPath):
+            fileName = rootPath.split('/')[-1]
+            # get content?
+            content = getContent(fileName)
+            m[content].append(rootPath)
+
+        paths = [rootPath+'/'+item for item in list_folder(rootPath)]
+
+        for path in paths:
+            nextPath = rootPath+'/'+path
+            dfs(nextPath)
+
+    dfs(root_path)
+
+    return [val for val in m.values() if len(val) > 1]
+
 
 # 20211117
