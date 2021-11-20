@@ -23,8 +23,13 @@ def is_folder():
 def getContent():
     pass
 
+# bfs
+
 
 def find_dupes(root_path: str) -> List[List[str]]:
+    if not root_path:
+        return []
+
     m = collections.defaultdict(list)
     q = collections.deque([root_path])
 
@@ -44,16 +49,25 @@ def find_dupes(root_path: str) -> List[List[str]]:
 
     return [val for val in m.values() if len(val) > 1]
 
+# dfs
+
 
 def find_dupes(root_path: str) -> List[List[str]]:
+    if not root_path:
+        return []
+
     m = collections.defaultdict(list)
 
     def dfs(rootPath: str):
+        if not rootPath:
+            return
+
         if not is_folder(rootPath):
             fileName = rootPath.split('/')[-1]
             # get content?
             content = getContent(fileName)
             m[content].append(rootPath)
+            return
 
         paths = [rootPath+'/'+item for item in list_folder(rootPath)]
 
