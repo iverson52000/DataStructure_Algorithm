@@ -30,9 +30,9 @@ def is_folder(path: str) -> bool:
 
 def getContent(path: str) -> str:
     with open(path) as file:
-        contents = file.readlines()
+        lines = file.readlines()
 
-        return ''.join(contents)
+        return ''.join(lines)
 
 
 print(getContent("test.js"))
@@ -54,6 +54,7 @@ def find_dupes(root_path: str) -> List[List[str]]:
             if not is_folder(path):
                 # fileName = path.split('/')[-1]
                 # get content?
+                # hashlib.md5(content.encode())
                 content = getContent(path)
                 m[content].append(path)
 
