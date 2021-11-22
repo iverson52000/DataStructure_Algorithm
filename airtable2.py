@@ -1,6 +1,7 @@
 from hashlib import md5
 
 arr = [1, 2, 3, 'a', 7]
+
 for item in arr:
     try:
         if isinstance(item, str):
