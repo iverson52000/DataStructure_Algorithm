@@ -11,3 +11,7 @@ for item in arr:
         print(err)
 
 print(md5(b"testing!!!"))
+
+root = "/home/airtable"
+path1 = "/home/airtable/Backups/2017_bashrc"
+print(path1.split(root+"/")[-1])

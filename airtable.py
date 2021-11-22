@@ -29,13 +29,13 @@ def is_folder(path: str) -> bool:
 
 
 def getContent(path: str) -> str:
-    with open(path) as file:
-        lines = file.readlines()
-
-        return ''.join(lines)
-
-
-print(getContent("test.js"))
+    try:
+        with open(path) as file:
+            lines = file.readlines()
+            return ''.join(lines)
+    except Exception as err:
+        print('Error!'+err)
+        raise err
 
 
 # bfs
@@ -47,19 +47,18 @@ def find_dupes(root_path: str) -> List[List[str]]:
     q = collections.deque([root_path])
 
     while q:
-        rootPath = q.popleft()
-        paths = [rootPath+'/'+name for name in list_folder(rootPath)]
+        curPath = q.popleft()
+        paths = [curPath+'/'+name for name in list_folder(curPath)]
 
         for path in paths:
             if not is_folder(path):
-                # fileName = path.split('/')[-1]
+                # subPath = path.split(root_path)[-1]
                 # get content?
                 # hashlib.md5(content.encode())
                 content = getContent(path)
                 m[content].append(path)
 
-            nextPath = rootPath+'/'+path
-            q.append(nextPath)
+            q.append(path)
 
     return [val for val in m.values() if len(val) > 1]
 
@@ -71,26 +70,22 @@ def find_dupes(root_path: str) -> List[List[str]]:
 
     m = collections.defaultdict(list)
 
-    def dfs(rootPath: str):
-        if not rootPath:
+    def dfs(curPath: str):
+        if not curPath:
             return
 
-        if not is_folder(rootPath):
-            # fileName = rootPath.split('/')[-1]
+        if not is_folder(curPath):
+            # subPath = curPath.split(root_path)[-1]
             # get content?
-            content = getContent(rootPath)
-            m[content].append(rootPath)
+            content = getContent(curPath)
+            m[content].append(curPath)
             return
 
-        paths = [rootPath+'/'+name for name in list_folder(rootPath)]
+        paths = [curPath+'/'+name for name in list_folder(curPath)]
 
         for path in paths:
-            nextPath = rootPath+'/'+path
-            dfs(nextPath)
+            dfs(path)
 
     dfs(root_path)
 
     return [val for val in m.values() if len(val) > 1]
-
-
-# 20211117
