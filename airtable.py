@@ -35,7 +35,7 @@ def getContent(path: str) -> str:
             return ''.join(lines)
     except Exception as err:
         print('Error!'+err)
-        raise err
+        # raise err
 
 
 # bfs
@@ -57,8 +57,8 @@ def find_dupes(root_path: str) -> List[List[str]]:
                 # hashlib.md5(content.encode())
                 content = getContent(path)
                 m[content].append(path)
-
-            q.append(path)
+            else:
+                q.append(path)
 
     return [val for val in m.values() if len(val) > 1]
 
