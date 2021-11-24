@@ -1,33 +1,37 @@
 import collections
 import threading
 import time
-import queue
+import q
 from collections import *
 from typing import List
 import random
 
-# Given a sorted list of disjoint intervals, each interval intervals[i] = [a, b] represents the set of real numbers x such that a <= x < b.
-# We remove the intersections between any interval in intervals and the interval toBeRemoved.
 
-intervals = [[0, 2], [3, 4], [5, 7]]
-toBeRemoved = [1, 6]
+def snakesAndLadders(self, board: List[List[int]]) -> int:
+    n = len(board)
 
-# Output: [[0,1],[6,7]]
-
-
-def removeInterval(intervals, toBeRemoved):
-    res = []
-
-    for interval in intervals:
-        if interval[1] <= toBeRemoved[0] or interval[0] >= toBeRemoved[1]:
-            res.append(interval)
+    def label_to_position(label):
+        r, c = divmod(label-1, n)
+        if r % 2 == 0:
+            return n-1-r, c
         else:
-            if interval[0] < toBeRemoved[0]:
-                res.append([interval[0], toBeRemoved[0]])
-            if interval[1] > toBeRemoved[1]:
-                res.append([toBeRemoved[1], interval[1]])
+            return n-1-r, n-1-c
 
-    return res
+    visited = set()
+    q = collections.deque()
+    q.append((1, 0))
 
+    while q:
+        label, step = q.popleft()
+        r, c = label_to_position(label)
+        if board[r][c] != -1:
+            label = board[r][c]
+        if label == n*n:
+            return step
+        for x in range(1, 7):
+            new_label = label + x
+            if new_label <= n*n and new_label not in visited:
+                visited.add(new_label)
+                q.append((new_label, step+1))
 
-print(removeInterval(intervals, toBeRemoved))
+    return -1
