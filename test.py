@@ -7,31 +7,27 @@ from typing import List
 import random
 
 
-def snakesAndLadders(self, board: List[List[int]]) -> int:
-    n = len(board)
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        closest = nums[0] + nums[1] + nums[2]
+        diff = abs(closest - target)
+        n = len(nums)
+        nums.sort()
 
-    def label_to_position(label):
-        r, c = divmod(label-1, n)
-        if r % 2 == 0:
-            return n-1-r, c
-        else:
-            return n-1-r, n-1-c
+        for i in range(n-2):
+            l = i+1
+            r = n-1
 
-    visited = set()
-    q = collections.deque()
-    q.append((1, 0))
+            while l < r:
+                summ = nums[i] + nums[l] + nums[r]
+                newDiff = abs(summ - target)
 
-    while q:
-        label, step = q.popleft()
-        r, c = label_to_position(label)
-        if board[r][c] != -1:
-            label = board[r][c]
-        if label == n*n:
-            return step
-        for x in range(1, 7):
-            new_label = label + x
-            if new_label <= n*n and new_label not in visited:
-                visited.add(new_label)
-                q.append((new_label, step+1))
+                if newDiff < diff:
+                    diff = newDiff
+                    closest = summ
+                if sum < target:
+                    l += 1
+                else:
+                    r -= 1
 
-    return -1
+        return closest
