@@ -8,28 +8,31 @@ import random
 
 
 class Solution:
-    def threeSumClosest(self, nums: List[int], target: int) -> int:
-        closest = nums[0] + nums[1] + nums[2]
-        diff = abs(closest - target)
-        n = len(nums)
-        nums.sort()
 
-        for i in range(n-2):
-            l = i+1
-            r = n-1
+    def __init__(self, w: List[int]):
+        self.w = w
+        for i in range(1, len(self.w)):
+            w[i] += w[i-1]
 
-            while l < r:
-                summ = nums[i] + nums[l] + nums[r]
-                newDiff = abs(summ - target)
+    def pickIndex(self) -> int:
+        num = random.randint(1, self.w[-1])
+        l = 0
+        r = len(self.w)-1
 
-                if newDiff < diff:
-                    diff = newDiff
-                    closest = summ
-                if sum < target:
-                    l += 1
-                else:
-                    r -= 1
+        while l <= r:
+            mid = (l+r)//2
+            if self.w[mid] == num:
+                return mid
+            elif self.w[mid] > num:
+                r = mid-1
+            else:
+                l = mid+1
 
-        return closest
+        return l
 
-# 20211125
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
+
+# 20211126
