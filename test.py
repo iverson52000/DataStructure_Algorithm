@@ -7,32 +7,22 @@ from typing import List
 import random
 
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution:
+    def findMinFibonacciNumbers(self, k: int) -> int:
+        if k < 2:
+            return k
 
-    def __init__(self, w: List[int]):
-        self.w = w
-        for i in range(1, len(self.w)):
-            w[i] += w[i-1]
+        fib0, fib1 = 1, 1
+        while fib1 <= k:
+            fib0, fib1 = fib1, fib0+fib1
 
-    def pickIndex(self) -> int:
-        num = random.randint(1, self.w[-1])
-        l = 0
-        r = len(self.w)-1
-
-        while l <= r:
-            mid = (l+r)//2
-            if self.w[mid] == num:
-                return mid
-            elif self.w[mid] > num:
-                r = mid-1
-            else:
-                l = mid+1
-
-        return l
-
-
-# Your Solution object will be instantiated and called as such:
-# obj = Solution(w)
-# param_1 = obj.pickIndex()
+        return self.findMinFibonacciNumbers(k-fib0) + 1
 
 # 20211126
