@@ -7,22 +7,12 @@ from typing import List
 import random
 
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
 class Solution:
-    def findMinFibonacciNumbers(self, k: int) -> int:
-        if k < 2:
-            return k
+    def reorderSpaces(self, text: str) -> str:
+        words = text.split()  # split(sep=None) will discard empty strings.
+        n_words = len(words)
+        n_space = text.count(' ')
+        gap = 0 if n_words == 1 else n_space // (n_words - 1)
+        n_trailing = n_space - gap * (n_words - 1)  # credit to @madno
 
-        fib0, fib1 = 1, 1
-        while fib1 <= k:
-            fib0, fib1 = fib1, fib0+fib1
-
-        return self.findMinFibonacciNumbers(k-fib0) + 1
-
-# 20211126
+        return (' ' * gap).join(words) + ' ' * n_trailing
