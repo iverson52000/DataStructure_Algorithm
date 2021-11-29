@@ -3,24 +3,28 @@ import threading
 import time
 from heapq import *
 from collections import *
-from typing import List
+from typing import *
 import random
 
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
-        heap = []
+    def lcaDeepestLeaves(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        def dfs(node) -> Tuple[int, TreeNode]:
+            if not node:
+                return 0, None
+            leftRes, rightRes = dfs(node.left), dfs(node.right)
 
-        for n, start, end in trips:
-            heappush(heap, (start, n))
-            heappush(heap, (end, -n))
+            if leftRes[0] > rightRes[0]:
+                return leftRes[0]+1, leftRes[1]
+            elif leftRes[0] < rightRes[0]:
+                return rightRes[0]+1, rightRes[1]
+            else:
+                return rightRes[0]+1, node
 
-        passenger = 0
-
-        while heap:
-            _, n = heappop(heap)
-            passenger += n
-            if passenger > capacity:
-                return False
-
-        return True
+        return dfs(root)[1]
