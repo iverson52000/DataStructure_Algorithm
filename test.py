@@ -7,30 +7,18 @@ from typing import *
 import random
 
 
-class Solution(object):
-    def findCircleNum(self, isConnected):
-        """
-        :type isConnected: List[List[int]]
-        :rtype: int
-        """
-
-        if not isConnected:
-            return 0
-
-        visited = set()
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
         res = 0
+        stack = []  # non-decreasing
+        arr = [float('-inf')] + arr + [float('-inf')]
 
-        for i in range(len(isConnected)):
-            if i not in visited:
-                q = collections.deque([i])
-                while q:
-                    p = q.popleft()
-                    if p not in visited:
-                        visited.add(p)
-                        q += [k for k,
-                              adj in enumerate(isConnected[p]) if adj and (k not in visited)]
-                res += 1
+        for i, num in enumerate(arr):
+            while stack and arr[stack[-1]] > num:
+                cur = stack.pop()
+                res += arr[cur] * (i - cur) * (cur - stack[-1])
+            stack.append(i)
 
-        return res
+        return res % (10**9 + 7)
 
 # 20211210
