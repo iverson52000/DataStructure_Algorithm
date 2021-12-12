@@ -8,17 +8,15 @@ import random
 
 
 class Solution:
-    def sumSubarrayMins(self, arr: List[int]) -> int:
-        res = 0
-        stack = []  # non-decreasing
-        arr = [float('-inf')] + arr + [float('-inf')]
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        jobs = sorted(zip(startTime, endTime, profit), key=lambda v: v[1])
+        dp = [[0, 0]]
 
-        for i, num in enumerate(arr):
-            while stack and arr[stack[-1]] > num:
-                cur = stack.pop()
-                res += arr[cur] * (i - cur) * (cur - stack[-1])
-            stack.append(i)
+        for start, end, profit in jobs:
+            i = bisect.bisect(dp, [start + 1]) - 1
+            if dp[i][1] + profit > dp[-1][1]:
+                dp.append([end, dp[i][1] + profit])
 
-        return res % (10**9 + 7)
+        return dp[-1][1]
 
-# 20211210
+# 20211212
