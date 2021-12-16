@@ -8,15 +8,35 @@ import random
 
 
 class Solution:
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        jobs = sorted(zip(startTime, endTime, profit), key=lambda v: v[1])
-        dp = [[0, 0]]
+    def __init__(self):
+        self.lessThan20 = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+                           "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+        self.tens = ["", "Ten", "Twenty", "Thirty", "Forty",
+                     "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
+        self.thousands = ["", "Thousand", "Million", "Billion"]
 
-        for start, end, profit in jobs:
-            i = bisect.bisect(dp, [start + 1]) - 1
-            if dp[i][1] + profit > dp[-1][1]:
-                dp.append([end, dp[i][1] + profit])
+    def numberToWords(self, num: int) -> str:
+        if num == 0:
+            return 'Zero'
 
-        return dp[-1][1]
+        res = ''
 
-# 20211214
+        def dfs(num) -> str:
+            if num == 0:
+                return ""
+            elif num < 20:
+                return self.lessThan20[num] + " "
+            elif num < 100:
+                return self.tens[num//10] + " " + dfs(num % 10)
+            else:
+                return self.lessThan20[num//100] + " Hundred " + dfs(num % 100)
+
+        while num > 0:
+            if num % 1000 != 0:
+                res = self.helper(num % 1000)+self.thousands[i]+' '+res
+            num //= 1000
+            i += 1
+
+        return res.strip()
+
+# 20211215
