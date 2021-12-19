@@ -4,7 +4,7 @@ import time
 from heapq import *
 from collections import *
 from typing import *
-import random
+# import random
 
 
 class Solution:
@@ -39,4 +39,4 @@ class Solution:
 
         return res.strip()
 
-# 20211217
+# 20211218
