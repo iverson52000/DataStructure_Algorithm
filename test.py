@@ -7,36 +7,41 @@ from typing import *
 # import random
 
 
-class Solution:
-    def __init__(self):
-        self.lessThan20 = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-                           "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
-        self.tens = ["", "Ten", "Twenty", "Thirty", "Forty",
-                     "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
-        self.thousands = ["", "Thousand", "Million", "Billion"]
+class Player:
+    member = True
 
-    def numberToWords(self, num: int) -> str:
-        if num == 0:
-            return 'Zero'
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self.age = age
 
-        res = ''
+    def run(self) -> int:
+        print("running")
+        return 1
 
-        def dfs(num) -> str:
-            if num == 0:
-                return ""
-            elif num < 20:
-                return self.lessThan20[num] + " "
-            elif num < 100:
-                return self.tens[num//10] + " " + dfs(num % 10)
-            else:
-                return self.lessThan20[num//100] + " Hundred " + dfs(num % 100)
 
-        while num > 0:
-            if num % 1000 != 0:
-                res = self.helper(num % 1000)+self.thousands[i]+' '+res
-            num //= 1000
-            i += 1
+class VIP(Player):
+    def __init__(self, name: str, age: int, tier: str):
+        super().__init__(name, age)
+        self.tier = tier
 
-        return res.strip()
+    def run(self) -> int:
+        # Player.run(self)
+        print(f"running like VIP({self.tier})")
+        return 1
+
+    def fly(self):
+        print('flying')
+
+
+player = Player('Albert', 30)
+vip = VIP('Bryan', 20, 'Gold')
+
+
+def doRun(char):
+    char.run()  # polymorphism
+
+
+playerRunning = doRun(player)
+vipRunning = doRun(vip)
 
 # 20211221
