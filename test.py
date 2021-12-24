@@ -7,41 +7,26 @@ from typing import *
 # import random
 
 
-class Player:
-    member = True
-
-    def __init__(self, name: str, age: int):
-        self.name = name
-        self.age = age
-
-    def run(self) -> int:
-        print("running")
-        return 1
+from collections import Counter
 
 
-class VIP(Player):
-    def __init__(self, name: str, age: int, tier: str):
-        super().__init__(name, age)
-        self.tier = tier
+class Solution:
+    def checkInclusion(self, s1, s2):
+        """
+        :type s1: str
+        :type s2: str
+        :rtype: bool
+        """
+        cnts_1, cnts_2 = Counter(s1), Counter(s2[:len(s1)])
 
-    def run(self) -> int:
-        # Player.run(self)
-        print(f"running like VIP({self.tier})")
-        return 1
+        for start in range(len(s1), len(s2)):
+            if cnts_1 == cnts_2:
+                return True
+            cnts_2[s2[start]] += 1
+            cnts_2[s2[start-len(s1)]] -= 1
+            if cnts_2[s2[start-len(s1)]] == 0:
+                del cnts_2[s2[start-len(s1)]]
 
-    def fly(self):
-        print('flying')
+        return cnts_1 == cnts_2
 
-
-player = Player('Albert', 30)
-vip = VIP('Bryan', 20, 'Gold')
-
-
-def doRun(char):
-    char.run()  # polymorphism
-
-
-playerRunning = doRun(player)
-vipRunning = doRun(vip)
-
-# 20211223
+# 20211224
