@@ -1,32 +1,45 @@
+# Given a prefix, return all words, that start with that prefix.
 import collections
-import threading
-import time
-from heapq import *
-from collections import *
 from typing import *
-# import random
+
+# Doggy day care centers help care for pet dogs while their owners might be busy at work.
+# However, dogs can be unhappy if they are too crowded, and so each dog needs a certain amount of space.
+# In addition, each dog also needs a certain amount of food.
+# Please write a reservation system to allow pet owners to reserve a space for their pet at the day care.
 
 
-from collections import Counter
+class Dog:
+    def __init__(self, size: int, foodRequired: int):
+        pass
 
 
-class Solution:
-    def checkInclusion(self, s1, s2):
-        """
-        :type s1: str
-        :type s2: str
-        :rtype: bool
-        """
-        cnts_1, cnts_2 = Counter(s1), Counter(s2[:len(s1)])
+class ReservationSystem:
+    def __init__(self, space: int, food: int):
+        dates = ['2021113', '2021114']
+        self.m = collections.defaultdict(List)
 
-        for start in range(len(s1), len(s2)):
-            if cnts_1 == cnts_2:
-                return True
-            cnts_2[s2[start]] += 1
-            cnts_2[s2[start-len(s1)]] -= 1
-            if cnts_2[s2[start-len(s1)]] == 0:
-                del cnts_2[s2[start-len(s1)]]
+        for date in dates:
+            self.m[date] = [space, food]
 
-        return cnts_1 == cnts_2
 
-# 20220112
+def reserverSpace(self, dog, date: str) -> bool:
+    # m{date: [space, food]}
+    space, food = self.m[date]
+    size = dog.size
+    foodRequired = dog.foodRequired
+
+    if size > space:
+        return False
+
+    if foodRequired > food:
+        return False
+
+    space -= size
+    food -= foodRequired
+
+    self.m[date] = [space, food]
+
+    return True
+
+
+reservationSystem = ReservationSystem(100, 100)
