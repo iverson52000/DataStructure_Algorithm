@@ -1,22 +1,16 @@
 package main
 
-import (
-	"context"
-	"fmt"
-	"time"
-)
-
 func main() {
-	ctx, cancel := context.WithCancel(context.Background())
+	// ctx, cancel := context.WithCancel(context.Background())
 
-	go worker(ctx, "worker1")
-	go worker(ctx, "worker2")
-	go worker(ctx, "worker3")
+	// go worker(ctx, "worker1")
+	// go worker(ctx, "worker2")
+	// go worker(ctx, "worker3")
 
-	time.Sleep(5 * time.Second)
-	fmt.Println("stop the gorutine")
-	cancel()
-	time.Sleep(5 * time.Second)
+	// time.Sleep(5 * time.Second)
+	// fmt.Println("stop the gorutine")
+	// cancel()
+	// time.Sleep(5 * time.Second)
 }
 
 func min(x, y int) int {

@@ -1,0 +1,6 @@
+{
+  "java.project.sourcePaths": [
+    "JavaPlayground/src",
+    "MavenPlayground/demo/src/main/java/com/albert"
+  ]
+}
