@@ -6,7 +6,7 @@ public class HelloWorld {
         System.out.println("Hello java 17!");
 
         int[][] input = { { 1, 3 }, { -2, 2 } };
-        int[][] res = kClosest(input, 2);
+        int[][] res = kClosest(input, 1);
 
         System.out.println(Arrays.deepToString(res));
 
@@ -28,11 +28,7 @@ public class HelloWorld {
         for (int i = 0; i < k; i++) {
             res[i] = pq.poll();
         }
-        while (k > 0) {
-            res[--k] = pq.poll();
-        }
 
-        System.out.println();
         return res;
 
     }
