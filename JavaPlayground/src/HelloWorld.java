@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Frog {
     private int age;
     private String name;
@@ -30,13 +32,19 @@ public class HelloWorld {
         // int[][] res = kClosest(input, 1);
         // System.out.println(Arrays.deepToString(res));
 
-        Frog frog1 = new Frog();
-        Frog.showInfo();
+        Machine mach1 = new Machine();
+        mach1.start();
 
-        StringBuilder sb = new StringBuilder("");
-        Machine mech1 = new Machine();
-        Car car1 = new Car();
-        car1.start();
+        Info info1 = new Machine();
+        info1.showInfo();
+
+        outputInfo(mach1);
+
+        ArrayList<Integer> arr = new ArrayList<>();
+
     }
 
+    private static void outputInfo(Info info) {
+        info.showInfo();
+    }
 }
