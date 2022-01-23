@@ -1,4 +1,8 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 class Frog {
     private int age;
@@ -25,7 +29,7 @@ class Frog {
     }
 }
 
-public class HelloWorld {
+public class HellWorld {
     public static void main(String[] args) {
 
         // int[][] input = { { 1, 3 }, { -2, 2 } };
@@ -38,13 +42,17 @@ public class HelloWorld {
         Info info1 = new Machine();
         info1.showInfo();
 
-        outputInfo(mach1);
+        // outputInfo(mach1);
 
         ArrayList<Integer> arr = new ArrayList<>();
 
+        Test1 test1 = new Test1();
+        try {
+            test1.run();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    private static void outputInfo(Info info) {
-        info.showInfo();
-    }
 }
