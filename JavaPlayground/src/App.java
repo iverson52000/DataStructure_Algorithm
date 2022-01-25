@@ -18,7 +18,7 @@ public class App {
     public void show(ArrayList<Integer> arr) {
         System.out.println("2. arr is: " + arr);
 
-        arr.add(4);
+        arr.add(5);
 
         System.out.println("3. arr is: " + arr);
 
