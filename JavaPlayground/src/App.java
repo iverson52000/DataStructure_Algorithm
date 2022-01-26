@@ -13,6 +13,8 @@ public class App {
         app.show(arr);
 
         System.out.println("4. arr is: " + arr);
+
+        ArrayList<String> strArr = new ArrayList<>();
     }
 
     public void show(ArrayList<Integer> arr) {
