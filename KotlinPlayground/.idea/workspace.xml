@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="388a1f26-1863-432e-9251-3d1013a52452" name="Changes" comment="Kotlin object">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/HOF.kt" afterDir="false" />
+    <list default="true" id="388a1f26-1863-432e-9251-3d1013a52452" name="Changes" comment="Advanced funcion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Entity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Entity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Entity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EntityFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EntityKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/consoleApp.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/consoleApp.kotlin_module" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +25,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="7b57faf9-61a9-4ac9-b728-0a85cb89146c" />
+        <option name="url" value="git@github.com:iverson52000/DataStructure_Algorithm.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -104,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643426495558</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Advanced funcion">
+      <created>1643516206799</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1643516206799</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,6 +130,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Kotlin class" />
     <MESSAGE value="Kotlin object" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kotlin object" />
+    <MESSAGE value="Advanced funcion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Advanced funcion" />
   </component>
 </project>
