@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 public class ExampleTest {
     @Test
     void shouldShowSimpleAssertion() {
-        Assertions.assertEquals(2, 1);
+        Assertions.assertEquals(3, 1);
     }
 
 
