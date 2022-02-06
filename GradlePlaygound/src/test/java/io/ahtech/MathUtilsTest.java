@@ -18,4 +18,9 @@ class MathUtilsTest {
         assertEquals(5, mathUtils.add(2, 3));
 
     }
+
+    @Test
+    void testComputeCircleArea() {
+        
+    }
 }

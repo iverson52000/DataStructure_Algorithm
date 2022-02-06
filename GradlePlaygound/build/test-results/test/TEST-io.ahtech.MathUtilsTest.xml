@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="io.ahtech.MathUtilsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-02T04:14:12" hostname="Albert-MacBook-Pro-16.local" time="0.014">
+<testsuite name="io.ahtech.MathUtilsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-05T21:21:05" hostname="Albert-MacBook-Pro-16.local" time="0.025">
   <properties/>
-  <testcase name="testAdd()" classname="io.ahtech.MathUtilsTest" time="0.014"/>
+  <testcase name="testAdd()" classname="io.ahtech.MathUtilsTest" time="0.025"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
