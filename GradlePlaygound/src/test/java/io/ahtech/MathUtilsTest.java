@@ -16,11 +16,14 @@ class MathUtilsTest {
     @Test
     void testAdd() {
         assertEquals(5, mathUtils.add(2, 3));
-
     }
 
     @Test
     void testComputeCircleArea() {
-        
+        double radius = 2.5;
+        double expected = Math.PI * radius * radius;
+        assertEquals(expected, mathUtils.computeCircleArea(radius), "should return circle area");
     }
+
+    
 }
