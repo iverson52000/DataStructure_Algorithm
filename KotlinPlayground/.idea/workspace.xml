@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="388a1f26-1863-432e-9251-3d1013a52452" name="Changes" comment="Advanced funcion">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Calculator.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/CalculatorTest.kt" afterDir="false" />
+    <list default="true" id="388a1f26-1863-432e-9251-3d1013a52452" name="Changes" comment="Junit5 in Kotlin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Calculator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Calculator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/CalculatorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/CalculatorTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +57,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="actions.on.save" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -66,7 +67,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CalculatorTest">
+  <component name="RunManager" selected="JUnit.CalculatorTest.Divide by zero should throw ArithmeticException">
     <configuration name="CalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="consoleApp" />
       <option name="PACKAGE_NAME" value="" />
@@ -86,9 +87,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EntityKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="EntityKt" />
+    <configuration name="CalculatorTest.Divide by zero should throw ArithmeticException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="consoleApp" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CalculatorTest" />
+      <option name="METHOD_NAME" value="Divide by zero should throw ArithmeticException" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,11 +113,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CalculatorTest.Divide by zero should throw ArithmeticException" />
         <item itemvalue="JUnit.CalculatorTest" />
+        <item itemvalue="Kotlin.MainKt" />
         <item itemvalue="JUnit.CalculatorTest.Adding 1 and 3 should be equal to 4" />
         <item itemvalue="Kotlin.HOFKt" />
-        <item itemvalue="Kotlin.EntityKt" />
-        <item itemvalue="Kotlin.MainKt" />
       </list>
     </recent_temporary>
   </component>
@@ -147,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643516206799</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Junit5 in Kotlin">
+      <created>1645069426899</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645069426899</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +176,7 @@
     <MESSAGE value="Kotlin class" />
     <MESSAGE value="Kotlin object" />
     <MESSAGE value="Advanced funcion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Advanced funcion" />
+    <MESSAGE value="Junit5 in Kotlin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Junit5 in Kotlin" />
   </component>
 </project>

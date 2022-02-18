@@ -1,5 +1,13 @@
-fun main(args: Array<String>) {
-    val nums = arrayOf(1, 2, 3)
+fun main() {
+    val square: (Int) -> Int = { num ->
+        num * num
+    }
 
-    nums.forEach { num -> println(num) }
+    println(square(5))
+
+    val printName: (String) -> Unit = {
+        println(it)
+    }
+
+    printName("Albert")
 }
