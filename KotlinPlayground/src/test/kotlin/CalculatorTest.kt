@@ -2,6 +2,10 @@ import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
+
 
 internal class CalculatorTest {
     private val calculator = Calculator()
@@ -14,5 +18,20 @@ internal class CalculatorTest {
     @Test
     fun `Divide by zero should throw ArithmeticException`() {
         assertThrows<ArithmeticException> { calculator.divide(1, 0) }
+    }
+
+    companion object {
+        @JvmStatic
+        fun squares() = listOf(
+            Arguments.of(1, 1),
+            Arguments.of(2, 4),
+            Arguments.of(3, 9)
+        )
+    }
+
+    @ParameterizedTest
+    @MethodSource("squares")
+    fun `Square of a number`(input: Int, expected: Int) {
+        assertEquals(expected, input * input)
     }
 }
