@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.DynamicTest
+import org.junit.jupiter.api.TestFactory
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -33,5 +35,16 @@ internal class CalculatorTest {
     @MethodSource("squares")
     fun `Square of a number`(input: Int, expected: Int) {
         assertEquals(expected, input * input)
+    }
+
+    @TestFactory
+    fun `Parameterized square of a number`() = listOf(
+        1 to 1,
+        2 to 4,
+        3 to 9
+    ).map { (input, expected) ->
+        DynamicTest.dynamicTest("Square of $input should equal $expected") {
+            assertEquals(expected, calculator.square(input))
+        }
     }
 }

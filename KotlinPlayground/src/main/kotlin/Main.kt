@@ -3,11 +3,17 @@ fun main() {
         num * num
     }
 
-    println(square(5))
+//    println(square(5))
 
     val printName: (String) -> Unit = {
         println(it)
     }
 
-    printName("Albert")
+    println(
+        listOf(
+            1 to 1,
+            2 to 4,
+            3 to 9
+        )
+    )
 }
