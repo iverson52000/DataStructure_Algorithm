@@ -5,6 +5,7 @@ import queue
 from collections import *
 from typing import List
 import random
+from hashlib import md5
 
 # input = "/home/airtable"
 # output = [
@@ -89,3 +90,21 @@ def find_dupes(root_path: str) -> List[List[str]]:
     dfs(root_path)
 
     return [val for val in m.values() if len(val) > 1]
+
+
+arr = [1, 2, 3, 'a', 7]
+
+for item in arr:
+    try:
+        if isinstance(item, str):
+            raise Exception("string!")
+        else:
+            print(item)
+    except Exception as err:
+        print(err)
+
+print(md5(b"testing!!!"))
+
+root = "/home/airtable"
+path1 = "/home/airtable/Backups/2017_bashrc"
+print(path1.split(root+"/")[-1])
