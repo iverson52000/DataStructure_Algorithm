@@ -3,5 +3,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	cout << "Hello world!" << std::endl;
+	int num = 15000;
+	cout << "Hello world! " << num << endl;
 }
