@@ -5,6 +5,8 @@
     "**/templates/**/*": "django-txt",
     "**/requirements{/**,*}.{txt,in}": "pip-requirements",
     "iostream": "cpp",
-    "ostream": "cpp"
-  }
+    "ostream": "cpp",
+    "vector": "cpp"
+  },
+  "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }
