@@ -1,3 +1,11 @@
+class Intent {
+    var a = 10
+}
+
 fun main() {
-    println("Hello again Kotlin!")
+    val intent = Intent().apply {
+        this.a = 5
+    }
+
+    println(intent.a)
 }
