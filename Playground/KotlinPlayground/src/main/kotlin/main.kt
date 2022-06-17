@@ -11,7 +11,7 @@ fun main() = runBlocking {    // Creates a blocking coroutine that executes in c
         }
     }
 
-    delay(5)  // Let's print a few values before we cancel
+    delay(1)  // Let's print a few values before we cancel
     job.cancelAndJoin()
 
     println("\nMain program ends: ${Thread.currentThread().name}")    // main thread
