@@ -1,19 +1,22 @@
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 
-fun main() = runBlocking {    // Creates a blocking coroutine that executes in current thread (main)
+fun simpleFlow(): Flow<Int> = flow { // flow builder
+    for (i in 1..3) {
+        delay(100) // pretend we are doing something useful here
+        emit(i) // emit next value
+    }
+}
 
-    println("Main program starts: ${Thread.currentThread().name}")  // main thread
-
-    val job: Job = launch {     // Thread main: Creates a non-blocking coroutine
-        for (i in 0..500) {
-            print("$i.")
-            yield()     // or use delay() or any other suspending function as per your need.
+fun main() = runBlocking<Unit> {
+    // Launch a concurrent coroutine to check if the main thread is blocked
+    launch {
+        for (k in 1..3) {
+            println("Main is not blocked $k")
+            delay(100)
         }
     }
-
-    delay(1)  // Let's print a few values before we cancel
-    job.cancelAndJoin()
-
-    println("\nMain program ends: ${Thread.currentThread().name}")    // main thread
+    // Collect the flow
+    simpleFlow().collect { value -> println(value) }
 }
 
