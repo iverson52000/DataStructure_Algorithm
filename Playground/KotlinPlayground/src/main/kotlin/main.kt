@@ -1,22 +1,27 @@
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
-fun simpleFlow(): Flow<Int> = flow { // flow builder
-    for (i in 1..3) {
-        delay(100) // pretend we are doing something useful here
-        emit(i) // emit next value
-    }
-}
-
 fun main() = runBlocking<Unit> {
-    // Launch a concurrent coroutine to check if the main thread is blocked
+
+    val flow = flow {
+        delay(250L)
+        emit("Appetizer")
+        delay(1000L)
+        emit("Main dish")
+        delay(100L)
+        emit("Dessert")
+    }
+    
     launch {
-        for (k in 1..3) {
-            println("Main is not blocked $k")
-            delay(100)
+        flow.onEach {
+            println("FLOW: $it is delivered")
+        }.buffer().collect {
+            println("FLOW: Now eating $it")
+            delay(1500L)
+            println("FLOW: Finished eating $it")
         }
     }
-    // Collect the flow
-    simpleFlow().collect { value -> println(value) }
+
 }
+
 
