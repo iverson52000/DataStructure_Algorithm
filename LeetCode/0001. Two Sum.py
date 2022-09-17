@@ -7,7 +7,8 @@ You may assume that each input would have exactly one solution, and you may not 
 same element twice.
 """
 
-#hashmap
+# hashmap
+
 
 class Solution(object):
     def twoSum(self, nums, target):
@@ -16,9 +17,12 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        if not nums: return []
+        if not nums:
+            return []
         m = {}
-        
+
         for i in range(len(nums)):
-            if nums[i] in m: return [m[nums[i]], i]
-            else: m[target-nums[i]] = i
+            if nums[i] in m:
+                return [m[nums[i]], i]
+            else:
+                m[target-nums[i]] = i
