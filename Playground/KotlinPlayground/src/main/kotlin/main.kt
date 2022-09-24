@@ -1,36 +1,25 @@
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
-import org.apache.commons.math3.distribution.LaplaceDistribution
-import kotlin.math.min
-import kotlin.random.Random
 
-class CustomTriple<A : Any, B : Any, C : Any>(
-    val first: A,
-    val second: B,
-    val third: C
-) {
-    fun printType() {
-        println("The type of first ${first::class}")
-        println("The type of second ${second::class}")
-        println("The type of third ${third::class}")
-    }
-}
-
-const val testVal = "*/"
-fun displayBorder(character: String = testVal, length: Int = 15) {
-    for (i in 1..length) {
-        print(character)
-    }
-}
+//fun main() = runBlocking {        // Executes in main thread
+//
+//    println("Main program starts: ${Thread.currentThread().name}")  // main thread
+//
+//    GlobalScope.launch {    // Thread: T1
+//        println("Fake work starts: ${Thread.currentThread().name}")     // Thread: T1
+//        delay(1000)   // Coroutine is suspended but Thread: T1 is free (not blocked)
+//        println("Fake work finished: ${Thread.currentThread().name}") // Either T1 or some other thread.
+//    }
+//
+//    delay(2000)  // main thread: wait for coroutine to finish (practically not a right way to wait)
+//
+//    println("Main program ends: ${Thread.currentThread().name}")    // main thread
+//}
 
 fun main() {
-    val customTriple = CustomTriple(1, 2, 3)
-    customTriple.printType()
-    displayBorder()
-    val arr = listOf(1, 2, 3)
-    val arrSize = min(arr.size, 10)
-    println(arr.subList(0, arrSize))
+    val sum = { x: Int, y: Int ->
+        println("ahsu: ${x + y}")
+        x + y
+    }
 
+    sum(5, 10)
 }
-
-
