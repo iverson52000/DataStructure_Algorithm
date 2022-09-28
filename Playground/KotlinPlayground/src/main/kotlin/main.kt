@@ -1,25 +1,20 @@
 import kotlinx.coroutines.*
 
-//fun main() = runBlocking {        // Executes in main thread
-//
-//    println("Main program starts: ${Thread.currentThread().name}")  // main thread
-//
-//    GlobalScope.launch {    // Thread: T1
-//        println("Fake work starts: ${Thread.currentThread().name}")     // Thread: T1
-//        delay(1000)   // Coroutine is suspended but Thread: T1 is free (not blocked)
-//        println("Fake work finished: ${Thread.currentThread().name}") // Either T1 or some other thread.
-//    }
-//
-//    delay(2000)  // main thread: wait for coroutine to finish (practically not a right way to wait)
-//
-//    println("Main program ends: ${Thread.currentThread().name}")    // main thread
-//}
+fun main() = runBlocking {    // Creates a blocking coroutine that executes in current thread (main)
 
-fun main() {
-    val sum = { x: Int, y: Int ->
-        println("ahsu: ${x + y}")
-        x + y
+    println("Main program starts: ${Thread.currentThread().name}")  // main thread
+
+    val job: Job = launch {   // Thread: main(it’s a child coroutine of runBlocking!)
+        println("Fake work starts: ${Thread.currentThread().name}")     // Thread: main
+        delay(1000)   // Coroutine is suspended but Thread: main is free (not blocked)
+        println("Fake work finished: ${Thread.currentThread().name}") // Thread: main
     }
 
-    sum(5, 10)
+    // job.cancel()
+    job.join()      // main thread: wait for coroutine to finish
+
+    println("Main program ends: ${Thread.currentThread().name}")    // main thread
 }
+
+
+
