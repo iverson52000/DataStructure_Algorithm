@@ -1,19 +1,33 @@
 import kotlinx.coroutines.*
+import java.util.concurrent.Executors
 
-fun main() = runBlocking {    // Creates a blocking coroutine that executes in current thread (main)
+fun main() {
+    val execService = Executors.newFixedThreadPool(5)
 
-    println("Main program starts: ${Thread.currentThread().name}")  // main thread
+    runBlocking {    // Creates a blocking coroutine that executes in the current thread (main)
+        println("Main program starts: ${Thread.currentThread().name}")  // main thread
 
-    val job: Job = launch {   // Thread: main(it’s a child coroutine of runBlocking!)
-        println("Fake work starts: ${Thread.currentThread().name}")     // Thread: main
-        delay(1000)   // Coroutine is suspended but Thread: main is free (not blocked)
-        println("Fake work finished: ${Thread.currentThread().name}") // Thread: main
+// execService.asCoroutineDispatcher()
+
+        val job: Job = launch(execService.asCoroutineDispatcher()) {
+            // Thread: main(it’s a child coroutine of runBlocking!)
+            try {
+                repeat(50) {
+                    println("Fake work starts: ${Thread.currentThread().name}")     // Thread: main
+                    delay(2000)   // Coroutine is suspended but Thread: main is free (not blocked)
+                    error("Wrong!")
+                    println("Fake work finished: ${Thread.currentThread().name}") // Thread: main
+                }
+            } finally {
+                execService.shutdown()
+            }
+        }
+
+        delay(5000)
+//        job.cancelAndJoin()
+
+        println("Main program ends: ${Thread.currentThread().name}")    // main thread
     }
-
-    // job.cancel()
-    job.join()      // main thread: wait for coroutine to finish
-
-    println("Main program ends: ${Thread.currentThread().name}")    // main thread
 }
 
 
