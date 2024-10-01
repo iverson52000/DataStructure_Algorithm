@@ -1,9 +1,8 @@
 import collections
-from typing import List
 
 
 class Solution:
-    def sortedSquares(self, nums: List[int]) -> List[int]:
+    def sortedSquares(self, nums: list[int]) -> list[int]:
         result = collections.deque()
         l, r = 0, len(nums)-1
 
@@ -18,4 +17,4 @@ class Solution:
 
         return list(result)
 
-# 20240924
+# 20240930
